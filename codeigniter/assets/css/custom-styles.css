@@ -1,0 +1,76 @@
+/*----------------- Gallery styles -------------------*/
+
+.gallery-title
+{
+    font-size: 36px;
+    color: #666666;
+    text-align: center;
+    font-weight: 500;
+}
+.gallery-title:after {
+    content: "";
+    position: absolute;
+    width: 7.5%;
+    left: 46.5%;
+    height: 45px;
+    border-bottom: 1px solid #5e5e5e;
+}
+.filter-button
+{
+    font-size: 18px;
+    border: 1px solid #666666;
+    border-radius: 5px;
+    text-align: center;
+    color: #666666;
+    margin-bottom: 5px;
+
+}
+.filter-button:hover
+{
+    font-size: 18px;
+    border: 1px solid #666666;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #666666;
+
+}
+.btn-default:active .filter-button:active
+{
+    background-color: #666666;
+    color: white;
+}
+
+.port-image
+{
+    width: 100%;
+}
+
+.gallery_product
+{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/*----------------- CUSTOM STYLES -------------------*/
+
+#mainWrap {
+	padding-top: 100px;
+}
+
+.search {
+	margin: 12px 15px;
+}
+
+.search input[type="text"] {
+	width: 70%;
+}
+
+.gal_menu{
+	width: 50%;
+	margin: 0 auto;
+}
+
+.gal_menu button{
+	width: 100%;
+}
