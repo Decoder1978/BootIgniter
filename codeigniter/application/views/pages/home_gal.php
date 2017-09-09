@@ -4,7 +4,6 @@
     <?php for($i = 1; $i < 4; $i++)
     {?>
       <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-        <h4>Album Title</h4>
         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="This is my title" data-caption="Some lovely red flowers" data-image="http://#" data-target="#image-gallery">
             <img class="img-responsive" src="http://fakeimg.pl/365x365/" alt="Short alt text">
         </a>
