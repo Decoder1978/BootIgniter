@@ -6,15 +6,16 @@ class Signup extends CI_Controller
 		parent::__construct();
 		$this->load->library(array('session', 'form_validation'));
 		$this->load->model('user_model');
+		$this->load->helper('date');
 	}
-	
+
 	function index()
 	{
 		// set form validation rules
-		$this->form_validation->set_rules('name', 'Name', 'trim|required|alpha|min_length[3]|max_length[30]');
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]|max_length[30]');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|md5');
-		
+
 		// submit
 		if ($this->form_validation->run() == FALSE)
         {
@@ -30,9 +31,10 @@ class Signup extends CI_Controller
 			$data = array(
 				'name' => $this->input->post('name'),
 				'email' => $this->input->post('email'),
-				'password' => $this->input->post('password')
+				'password' => $this->input->post('password'),
+				'date_created' => now()
 			);
-			
+
 			if ($this->user_model->insert_user($data))
 			{
 				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">You are Successfully Registered! Please login to access your Profile!</div>');

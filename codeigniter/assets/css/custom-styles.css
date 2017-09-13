@@ -59,6 +59,7 @@
 }
 
 .search {
+	width: 300px;
 	margin: 12px 15px;
 }
 
@@ -73,7 +74,7 @@
 }
 
 .gal_menu{
-	width: 50%;
+	width: 70%;
 	margin: 0 auto;
 }
 

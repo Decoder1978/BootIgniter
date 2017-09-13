@@ -24,10 +24,10 @@
 					</div>
 				</li>
 			</ul>
-			
+
 			<ul class="nav navbar-nav navbar-right">
 				<?php if ($this->session->userdata('login')){ ?>
-				<li><a href="<?php echo base_url(); ?>profile">Hello <?php echo $this->session->userdata('uname'); ?></a></li>
+				<li><a href="<?php echo base_url(); ?>profile">Hello, <?php echo $this->session->userdata('uname'); ?></a></li>
 				<li><a href="<?php echo base_url(); ?>home/logout">Log Out</a></li>
 				<?php } else { ?>
 				<li><a href="<?php echo base_url(); ?>login">Login</a></li>

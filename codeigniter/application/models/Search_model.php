@@ -8,9 +8,11 @@ Class Search_model Extends CI_Model
 
     function search($keyword)
     {
-        $this->db->like('title',$keyword);
-        $query = $this->db->get('gallery_image');
+        $this->db->from('gallery_album ga');
+        $this->db->like('ga.title',$keyword);
+        $this->db->join('gallery_image gi', 'gi.album_id = ga.album_id');
+        $query = $this->db->get();
         return $query->result();
     }
-}   
+}
 ?>

@@ -1,7 +1,7 @@
 <!-- Modal -->
 
 <!-- CHANGE THIS!!!!! -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id=<?php echo "myModal$i";?> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="row">
@@ -70,7 +70,7 @@
                                 <br/>
 
                                 <input placeholder="Comment" type="text" style="height:100px" class="form-control" />
-                                <span class="text-mute">Please wrtie your openion.</span>
+                                <span class="text-mute">Please write your opinion.</span>
                                 <button class="btn btn-sm btn-primary pull-right">Save</button>
 
                             </div>

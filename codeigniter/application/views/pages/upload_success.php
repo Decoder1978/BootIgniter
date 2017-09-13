@@ -1,8 +1,7 @@
-<h3>Your file was successfully uploaded!</h3>  
-		
-<ul> 
-	<?php 
-	foreach ($upload_image_data as $key => $value) { ?> 
+<h3>Your file was successfully uploaded!</h3>
+<ul>
+	<?php
+	foreach ($upload_data as $key => $value) { ?>
 		<?php if ($key == "raw_name") { ?>
 			<h4><?php echo $value;?></h4>
 			<div>
@@ -11,6 +10,5 @@
 		<?php } ?>
 			</div>
 	<?php } ?>
-</ul>  
-
-<p><?php echo anchor('upload', 'Upload Another File!'); ?></p>
+</ul>
+<p><?php echo anchor('upload', 'Upload Another File!'); ?> </p>

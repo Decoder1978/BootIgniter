@@ -16,7 +16,7 @@ class Login extends CI_Controller
 		// form validation
 		$this->form_validation->set_rules("email", "Email", "trim|required");
 		$this->form_validation->set_rules("password", "Password", "trim|required");
-		
+
 		if ($this->form_validation->run() == FALSE)
         {
 			// validation fail
@@ -32,7 +32,7 @@ class Login extends CI_Controller
 			if (count($uresult) > 0)
 			{
 				// set session
-				$sess_data = array('login' => TRUE, 'uname' => $uresult[0]->name, 'uid' => $uresult[0]->id);
+				$sess_data = array('login' => TRUE, 'uname' => $uresult[0]->name, 'uid' => $uresult[0]->user_id);
 				$this->session->set_userdata($sess_data);
 				redirect("profile/index");
 			}

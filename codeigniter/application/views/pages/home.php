@@ -10,31 +10,31 @@
 	<!-- Wrapper for slides -->
 	<div class="carousel-inner">
 		<div class="item active">
-			<img src="http://placehold.it/1200x400" />
+			<img src="<?php echo base_url();?>uploads/carousel_photo/fall_grass_leaves_91527.jpg" />
 			<div class="carousel-caption">
-				<h1 class="carousel-caption-header">Slide 1</h1>
+				<h1 class="carousel-caption-header">Find picture of your dreams</h1>
 				<p class="carousel-caption-text hidden-sm hidden-xs">
-					Long Slide Caption 1
+					Here you can find many wallpapers for your personal preference
 				</p>
 			</div>
 		</div>
-		
+
 		<div class="item">
-			<img src="http://placehold.it/1200x400/AAAAAA/888888" />
+			<img src="<?php echo base_url();?>uploads/carousel_photo/milky_way_stars_night_sky_space_97654.jpg" />
 			<div class="carousel-caption">
-				<h1 class="carousel-caption-header">Slide 2</h1>
+				<h1 class="carousel-caption-header">Share your thoughts</h1>
 				<p class="carousel-caption-text hidden-sm hidden-xs">
-					Long Slide Caption 2
+					Write comments for pictures that attract your attention
 				</p>
 			</div>
 		</div>
-		
+
 		<div class="item">
-			<img src="http://placehold.it/1200x400/888888/555555" />
+			<img src="<?php echo base_url();?>uploads/carousel_photo/surface_texture_stains_background_50906.jpg" />
 			<div class="carousel-caption">
-				<h1 class="carousel-caption-header">Slide 3</h1>
+				<h1 class="carousel-caption-header">Add your own images</h1>
 				<p class="carousel-caption-text hidden-sm hidden-xs">
-					Long Slide Caption 3
+					Upload wallpapers of your own collection to share with others
 				</p>
 			</div>
 		</div>
@@ -47,7 +47,7 @@
 	<a class="right carousel-control" href="#transition-timer-carousel" data-slide="next">
 		<span class="glyphicon glyphicon-chevron-right"></span>
 	</a>
-	
+
 	<!-- Timer "progress bar" -->
 	<hr class="transition-timer-carousel-progress-bar animate" />
 </div>
