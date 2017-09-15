@@ -1,7 +1,7 @@
 <!-- Modal -->
 
 <!-- CHANGE THIS!!!!! -->
-        <div class="modal fade" id=<?php echo "myModal$i";?> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal show" id=<?php echo "myModal$i";?> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="row">
@@ -59,11 +59,11 @@
                                     </div>
                                 </div>
                                <hr/>
-                               
+
                                 <p class="text-success">Text Text Text</p>
                                 <p>TextTextText</p>
                                 <p class="text-mute">TextTextText</p>
-                                <br/>                               
+                                <br/>
                                 <p class="text-success">Text Text Text</p>
                                 <p>TextTextText</p>
                                 <p class="text-mute">TextTextText</p>

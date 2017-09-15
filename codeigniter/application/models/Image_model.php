@@ -31,25 +31,21 @@ class Image_model extends CI_Model
 	{
 		$this->db->distinct();
 		$this->db->group_by('album_id');
-		//$this->db->order_by('album_id');
 		if($page == 'home')
 			$this->db->limit(4);
     $query = $this->db->get('gallery_image');
 		$result = $query->result();
-		$img_info = array('rows' => $result);
-		return $img_info;
+		$img_info = array('rows' => $result, 'num_rows' => $query->num_rows());
 
+		return $img_info;
 	}
-	/* future update for "Recent Gallery"
-	function get_random_image()
+
+	function get_album_images()
 	{
-		$this->db->distinct();
-		$this->db->group_by('album_id', 'RANDOM');
-		$this->db->limit(4);
 		$query = $this->db->get('gallery_image');
 		$result = $query->result();
-		$rand_img_info = array('rows' => $result);
-		return $rand_img_info;
+
+		return $result;
 	}
-	*/
+
 }?>

@@ -17,10 +17,13 @@
         {
           $this->load->view($page, $search_result);
         }
-				else if($page == "pages/profile" || $page == "pages/upload_success"){
-					$this->load->view($page, $album_data);
+				else if($page == "pages/profile")
+        {
+          $this->load->view($page);
+					$this->load->view($sub_page, $album_data);
 				}
-        else{
+        else
+        {
           $this->load->view($page);
         }?>
 			</div>

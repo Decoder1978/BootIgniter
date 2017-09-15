@@ -16,38 +16,14 @@ class Profile extends CI_Controller
 			show_404();
 		}
 
+		$data['title'] = ucfirst('profile');
 		$details = $this->User_model->get_user_by_id($this->session->userdata('uid'));
 		$album_data = $this->Upload_model->show_albums();
-		$data['title'] = ucfirst('profile');
-		$page_body = array('page' => 'pages/profile', 'uname' => $details[0]->name, 'uemail' => $details[0]->email, 'album_data' => $album_data);
+		$this->session->set_flashdata('album_data', $album_data);
+		$this->session->set_flashdata('details', $details);
+		$sub_page = $this->session->flashdata('sub_page');
+		$page_body = array('page' => 'pages/profile', 'sub_page' => $sub_page = 'pages/upload', 'album_data' => $album_data, 'uname' => $details[0]->name, 'uemail' => $details[0]->email, 'error' => '');
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
-	}
-
-	public function do_upload()
-	{
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']      = 100;
-		$config['max_width']     = 1024;
-		$config['max_height']    = 768;
-		$this->load->library('upload', $config);
-
-		$data['title'] = ucfirst('profile');
-		$this->load->view('templates/head', $data);
-
-
-		if ( ! $this->upload->do_upload('userfile'))
-		{
-				$details = $this->User_model->get_user_by_id($this->session->userdata('uid'));
-				$album_data = $this->Upload_model->show_albums();
-				$error = array('error' => $this->upload->display_errors());
-				$page_body = array('page' => 'pages/profile', 'uname' => $details[0]->name, 'uemail' => $details[0]->email, 'album_data' => $album_data, 'error' => $error);
-				$this->load->view('templates/body', $page_body);
-		}
-		else
-		{
-				$page_body = array('page' => 'pages/upload_success', 'album_data' => $this->upload->data());
-				$this->load->view('templates/body', $page_body);
-		}
 	}
 }

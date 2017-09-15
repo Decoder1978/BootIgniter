@@ -11,10 +11,10 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="<?php echo base_url(); ?>home">Home</a></li>
-				<li><a href="<?php echo base_url(); ?>gallery">Gallery</a></li>
-				<li><a href="<?php echo base_url(); ?>about">About</a></li>
-				<li><a href="<?php echo base_url(); ?>contact">Contact</a></li>
+				<li><a class="<?php echo ($this->uri->segment(1) == "home") ? "active" : "";?>" href="<?php echo base_url(); ?>home">Home</a></li>
+				<li><a class="<?php echo ($this->uri->segment(1) == "gallery") ? "active" : "";?>" href="<?php echo base_url(); ?>gallery">Gallery</a></li>
+				<li><a class="<?php echo ($this->uri->segment(1) == "about") ? "active" : "";?>" href="<?php echo base_url(); ?>about">About</a></li>
+				<li><a class="<?php echo ($this->uri->segment(1) == "contact") ? "active" : "";?>" href="<?php echo base_url(); ?>contact">Contact</a></li>
 				<li>
 					<div class="search">
 						<form action="<?php echo site_url('search/search_keyword');?>" method = "post">

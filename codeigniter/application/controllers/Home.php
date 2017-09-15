@@ -17,9 +17,10 @@ class Home extends CI_Controller
 		$data['title'] = ucfirst('home');
 		$img_data = $this->Image_model->get_image('home');
 		$album_data = $this->Image_model->get_album_info();
+		$modal_data = $this->Image_model->get_album_images();
 
-		$gal_data = array('album_data' => $album_data, 'img_data' => $img_data);
-		$page_body = array('page' => 'pages/home', 'nested_home_gal' => 'pages/home_gal', 'gal_data' => $gal_data, /*'pic_modal' => 'pages/modal'*/);
+		$gal_data = array('album_data' => $album_data, 'img_data' => $img_data, 'modal_data' => $modal_data);
+		$page_body = array('page' => 'pages/home', 'nested_home_gal' => 'pages/home_gal', 'gal_data' => $gal_data);
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
 	}
