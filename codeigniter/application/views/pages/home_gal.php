@@ -2,6 +2,7 @@
 <div class="col-lg-12">
 	<h1 class="page-header">Recent Gallery</h1>
 <?php
+	//var_dump($gal_data['comment_data']);
 	foreach($gal_data['album_data']['rows'] as $alb_row)
 	{
 		foreach($gal_data['img_data']['rows'] as $img_row)
@@ -16,7 +17,7 @@
 				</a>
 				<div class="gal_menu">
 					<!-- Modal callout -->
-					<button type="button" class="btn btn-info modal_view" data-toggle="modal" data-target=<?php echo "#myModal".$alb_row->album_id; ?> >VIEW ALBUM</button>
+					<button type="button" class="btn btn-info modal_view" data-toggle="modal" data-target=<?php echo "#myModal".$alb_row->album_id; ?> >DETAILS</button>
 
 
 					<!-- Modal -->
@@ -24,9 +25,9 @@
 	            <div class="modal-dialog modal-lg" role="document">
 	                <div class="modal-content">
 	                    <div class="row">
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
 	                        <div class="col-md-8">
-	                            <div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel" style="height:600px; background-color: black;">
+	                            <div id=<?php echo "modal-carousel".$alb_row->album_id; ?> class="carousel slide modal-carousel" data-ride="carousel" style="height:500px; background-color: black;">
 	                                <!-- Indicators -->
 	                                <ol class="carousel-indicators">
 																			<?php
@@ -37,10 +38,10 @@
 																				{
 																						if ($prev_count == 0)
 																						{  ?>
-																							<li data-target="#transition-timer-carousel" data-slide-to="<?php echo $i; ?>" class="active"></li>
+																							<li data-target=<?php echo "#modal-carousel".$alb_row->album_id; ?> data-slide-to="<?php echo $i; ?>" class="active"></li>
 																			<?php	}
 																				else { ?>
-																							<li data-target="#transition-timer-carousel" data-slide-to="<?php echo $i; ?>"></li>
+																							<li data-target=<?php echo "#modal-carousel".$alb_row->album_id; ?> data-slide-to="<?php echo $i; ?>"></li>
 																			<?php	 }
 																				$prev_count = $i;
 																				}
@@ -59,6 +60,7 @@
 																							{ ?>
 																							<div class="item active">
 																									<img src="<?php echo base_url().'/'.$gal_data['modal_data'][$j]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j]->alt; ?>" >
+																									<h4><?php echo $gal_data['modal_data'][$j]->title; ?></h4>
 																							</div>
 																				<?php
 																							}
@@ -66,6 +68,7 @@
 																							{ ?>
 																							<div class="item">
 																									<img src="<?php echo base_url().'/'.$gal_data['modal_data'][$j]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j]->alt; ?>" >
+																									<h4><?php echo $gal_data['modal_data'][$j]->title; ?></h4>
 																							</div>
 																				<?php	}
 																			$prev_num = $j;
@@ -73,13 +76,12 @@
 																				} ?>
 
 	                                </div>
-																	<a class="left carousel-control" href="#transition-timer-carousel" data-slide="prev">
+																	<a class="left carousel-control" data-slide="prev" onclick="$('<?php echo "#modal-carousel".$alb_row->album_id; ?>').carousel('prev')">
 																		<span class="glyphicon glyphicon-chevron-left"></span>
 																	</a>
-																	<a class="right carousel-control" href="#transition-timer-carousel" data-slide="next">
+																	<a class="right carousel-control" data-slide="next" onclick="$('<?php echo "#modal-carousel".$alb_row->album_id; ?>').carousel('next')">
 																		<span class="glyphicon glyphicon-chevron-right"></span>
 																	</a>
-																	<hr class="transition-timer-carousel-progress-bar animate" />
 
 	                            </div>
 	                        </div>
@@ -87,11 +89,23 @@
 	                            <div class="modal-body inline">
 	                                <div class="row">
 	                                    <div class="col-md-9">
-	                                        <h4><?php echo $img_row->title; ?></h4>
+	                                        <h4><?php echo $alb_row->title; ?></h4>
+
 	                                    </div>
+																			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	                                </div>
 	                               <hr/>
 																 	<h5><b>Comments:</b></h5>
+																	<?php
+																	for ($i = 0; $i < count($gal_data['comment_data']); $i++)
+																	{
+
+																		if($gal_data['comment_data'][$i]->album_id == $alb_row->album_id)
+																		{
+
+																		}
+																	}
+																	?>
 	                                <p class="text-success">Text Text Text</p>
 	                                <p>TextTextText</p>
 	                                <p class="text-mute">TextTextText</p>

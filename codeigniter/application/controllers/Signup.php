@@ -32,7 +32,7 @@ class Signup extends CI_Controller
 				'name' => $this->input->post('name'),
 				'email' => $this->input->post('email'),
 				'password' => $this->input->post('password'),
-				'date_created' => now()
+				'date_created' => date('Y-m-d H:i:s')
 			);
 
 			if ($this->user_model->insert_user($data))

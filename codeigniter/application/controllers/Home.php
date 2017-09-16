@@ -5,6 +5,7 @@ class Home extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Image_model');
+		$this->load->model('Comment_model');
 	}
 
 	function index()
@@ -18,8 +19,9 @@ class Home extends CI_Controller
 		$img_data = $this->Image_model->get_image('home');
 		$album_data = $this->Image_model->get_album_info();
 		$modal_data = $this->Image_model->get_album_images();
+		$comment_data = $this->Comment_model->get_comments();
 
-		$gal_data = array('album_data' => $album_data, 'img_data' => $img_data, 'modal_data' => $modal_data);
+		$gal_data = array('album_data' => $album_data, 'img_data' => $img_data, 'modal_data' => $modal_data, 'comment_data' => $comment_data);
 		$page_body = array('page' => 'pages/home', 'nested_home_gal' => 'pages/home_gal', 'gal_data' => $gal_data);
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
