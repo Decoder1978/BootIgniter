@@ -3,14 +3,14 @@
 		</div>
 		<div align="center">
 			<button class="btn btn-default filter-button active" data-filter="all">All</button>
-			
+
 		<?php
 			for($i = 0; $i < $gal_data['category_data']['num_rows']; $i++):
 				$rows = $gal_data['category_data']['rows'];
 				$category_title = $rows[$i]->title;?>
 			<button class="btn btn-default filter-button" data-filter="<?php echo $category_title;?>"><?php echo ucfirst($category_title);?></button>
-			<?php 
+			<?php
 			endfor; ?>
-			
+
 		</div>
 		<br/>

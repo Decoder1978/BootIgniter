@@ -11,7 +11,7 @@ foreach($gal_data['category_data']['rows'] as $cat_row)
 				{?>
 					<div class=<?php echo "'gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 thumb filter $cat_row->title'"; ?> >
 						<h4><?php echo ucfirst($alb_row->title); ?></h4>
-						<a class="thumbnail" href="#" data-image-id="<?php echo $img_row->image_id;?>" data-toggle="modal" data-title="<?php echo $img_row->title;?>" data-target="#image-gallery">
+						<a class="thumbnail modal_view" href="#" data-image-id="<?php echo $img_row->image_id;?>" data-toggle="modal" data-title="<?php echo $img_row->title;?>" data-target=<?php echo "#myModal".$alb_row->album_id; ?> >
 							<img src="<?php echo base_url().$img_row->full_path;?>" alt="<?php echo $img_row->alt;?>" class="img-responsive">
 						</a>
 						<div class="gal_menu">
@@ -27,19 +27,19 @@ foreach($gal_data['category_data']['rows'] as $cat_row)
 			                        <div class="col-md-8">
 			                            <div id=<?php echo "modal-gallery-carousel".$alb_row->album_id; ?> class="carousel slide modal-gallery-carousel" data-ride="carousel" style="height:500px; background-color: black;">
 			                                <!-- Indicators -->
-			                                <ol class="carousel-indicators">
+			                                <ol class="carousel-indicators gal-c-i">
 																					<?php
-																					$prev_count = 0;
-																					for($i = 0; $i < count($gal_data['modal_data']); $i++)
+																					$prev_count = NULL;
+																					for($i = 1; $i < count($gal_data['modal_data']); $i++)
 																					{
-																						if ($gal_data['modal_data'][$i]->album_id == $alb_row->album_id)
+																						if ($gal_data['modal_data'][$i-1]->album_id == $alb_row->album_id)
 																						{
-																								if ($prev_count == 0)
+																								if ($prev_count == NULL)
 																								{  ?>
-																									<li data-target=<?php echo "#modal-gallery-carousel".$alb_row->album_id; ?> data-slide-to="<?php echo $i; ?>" class="active"></li>
+																									<li data-target=<?php echo "#modal-gallery-carousel".$alb_row->album_id; ?> data-slide-to="<?php echo $i-1; ?>" class="active"></li>
 																					<?php	}
 																						else { ?>
-																									<li data-target=<?php echo "#modal-gallery-carousel".$alb_row->album_id; ?> data-slide-to="<?php echo $i; ?>"></li>
+																									<li data-target=<?php echo "#modal-gallery-carousel".$alb_row->album_id; ?> data-slide-to="<?php echo $i-1; ?>"></li>
 																					<?php	 }
 																						$prev_count = $i;
 																						}
@@ -49,24 +49,24 @@ foreach($gal_data['category_data']['rows'] as $cat_row)
 			                                <!-- Wrapper for slides -->
 			                                <div class="carousel-inner">
 																					<?php
-																						$prev_num = 0;
-																						for($j = 0; $j < count($gal_data['modal_data']); $j++)
+																						$prev_num = NULL;
+																						for($j = 1; $j < count($gal_data['modal_data']); $j++)
 																						{
-																							if ($gal_data['modal_data'][$j]->album_id == $alb_row->album_id)
+																							if ($gal_data['modal_data'][$j-1]->album_id == $alb_row->album_id)
 																							{
-																									if ($prev_num == 0)
+																									if ($prev_num == NULL)
 																									{ ?>
 																									<div class="item active">
-																											<img src="<?php echo base_url().'/'.$gal_data['modal_data'][$j]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j]->alt; ?>" >
-																											<h4><?php echo $gal_data['modal_data'][$j]->title; ?></h4>
+																											<img src="<?php echo base_url().'/'.$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
+																											<h4><?php echo $gal_data['modal_data'][$j-1]->title; ?></h4>
 																									</div>
 																						<?php
 																									}
 																							else
 																									{ ?>
 																									<div class="item">
-																											<img src="<?php echo base_url().'/'.$gal_data['modal_data'][$j]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j]->alt; ?>" >
-																											<h4><?php echo $gal_data['modal_data'][$j]->title; ?></h4>
+																											<img src="<?php echo base_url().'/'.$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
+																											<h4><?php echo $gal_data['modal_data'][$j-1]->title; ?></h4>
 																									</div>
 																						<?php	}
 																					$prev_num = $j;
@@ -93,19 +93,27 @@ foreach($gal_data['category_data']['rows'] as $cat_row)
 																					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			                                </div>
 			                               <hr/>
-																		 	<h5><b>Comments:</b></h5>
-			                                <p class="text-success">Text Text Text</p>
-			                                <p>TextTextText</p>
-			                                <p class="text-mute">TextTextText</p>
-			                                <br/>
-			                                <p class="text-success">Text Text Text</p>
-			                                <p>TextTextText</p>
-			                                <p class="text-mute">TextTextText</p>
-			                                <br/>
+																		 <h5><b>Comments:</b></h5>
+																		 <?php
+																		 for ($i = 0; $i < count($gal_data['comment_data']); $i++)
+																		 {
 
-			                                <input placeholder="Comment" type="text" style="height:100px" class="form-control" />
-			                                <span class="text-mute">Please write your opinion.</span>
-			                                <button class="btn btn-sm btn-primary pull-right">Save</button>
+																			 if($gal_data['comment_data'][$i]->album_id == $alb_row->album_id)
+																			 { ?>
+																				 <p class="text-success"><?php echo $gal_data['comment_data'][$i]->name; ?></p>
+																				 <p><?php echo $gal_data['comment_data'][$i]->comment_text; ?></p>
+																				 <p class="text-mute"><?php echo $gal_data['comment_data'][$i]->date; ?></p>
+																				 <br/>
+																	 <?php	}
+																		 }
+																		 ?>
+
+																		 <form class="<?php echo $gal_data['comment_status']; ?>" action="<?= base_url()."gallery";?>" method="post" enctype="multipart/form-data">
+																			 <input type="hidden" name="album" value="<?php echo $alb_row->album_id; ?>"/>
+																			 <input placeholder="Comment" type="text" style="height:100px" name="comment" class="form-control" />
+																			 <span class="text-mute">Please write your opinion.</span>
+																			 <button class="btn btn-sm btn-primary pull-right comment-btn">Save</button>
+																		 </form>
 			                            </div>
 			                        </div>
 			                    </div>
