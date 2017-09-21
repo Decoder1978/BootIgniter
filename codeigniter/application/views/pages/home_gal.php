@@ -10,8 +10,8 @@
 				{
 					?>
 			<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				<h4><?php echo ucfirst($alb_row->title); ?></h4>
-				<a class="thumbnail modal_view" href="#" data-image-id="<?php echo $img_row->image_id; ?>" data-toggle="modal" data-title="<?php echo $img_row->title; ?>" data-target=<?php echo "#myModal".$alb_row->album_id; ?> >
+				<h4><?php echo ucfirst($alb_row->album_title); ?></h4>
+				<a class="thumbnail modal_view" href="<?php echo $alb_row->album_title; ?>" data-image-id="<?php echo $img_row->image_id; ?>" data-toggle="modal" data-title="<?php echo $img_row->image_title; ?>" data-target=<?php echo "#myModal".$alb_row->album_id; ?> >
 					<img src="<?php echo base_url().$img_row->full_path; ?>" alt="<?php echo $img_row->alt; ?>" class="img-responsive">
 				</a>
 				<div class="gal_menu">
@@ -26,7 +26,7 @@
 	                    <div class="row">
 
 	                        <div class="col-md-8">
-	                            <div id=<?php echo "modal-carousel".$alb_row->album_id; ?> class="carousel slide modal-carousel" data-ride="carousel" style="height:500px; background-color: black;">
+	                            <div id=<?php echo "modal-carousel".$alb_row->album_id; ?> class="carousel slide modal-carousel" data-ride="carousel">
 	                                <!-- Indicators -->
 	                                <ol class="carousel-indicators">
 																			<?php
@@ -59,7 +59,7 @@
 																							{ ?>
 																							<div class="item active">
 																									<img src="<?php echo base_url().'/'.$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
-																									<h4><?php echo $gal_data['modal_data'][$j-1]->title; ?></h4>
+																									<h4><?php echo $gal_data['modal_data'][$j-1]->image_title; ?></h4>
 																							</div>
 																				<?php
 																							}
@@ -67,20 +67,22 @@
 																							{ ?>
 																							<div class="item">
 																									<img src="<?php echo base_url().'/'.$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
-																									<h4><?php echo $gal_data['modal_data'][$j-1]->title; ?></h4>
+																									<h4><?php echo $gal_data['modal_data'][$j-1]->image_title; ?></h4>
 																							</div>
 																				<?php	}
 																			$prev_num = $j;
 																					}
 																				} ?>
 
+
+																				<a class="left carousel-control" data-slide="prev" onclick="$('<?php echo "#modal-carousel".$alb_row->album_id; ?>').carousel('prev')">
+																					<span class="glyphicon glyphicon-chevron-left"></span>
+																				</a>
+																				<a class="right carousel-control" data-slide="next" onclick="$('<?php echo "#modal-carousel".$alb_row->album_id; ?>').carousel('next')">
+																					<span class="glyphicon glyphicon-chevron-right"></span>
+																				</a>
 	                                </div>
-																	<a class="left carousel-control" data-slide="prev" onclick="$('<?php echo "#modal-carousel".$alb_row->album_id; ?>').carousel('prev')">
-																		<span class="glyphicon glyphicon-chevron-left"></span>
-																	</a>
-																	<a class="right carousel-control" data-slide="next" onclick="$('<?php echo "#modal-carousel".$alb_row->album_id; ?>').carousel('next')">
-																		<span class="glyphicon glyphicon-chevron-right"></span>
-																	</a>
+
 
 	                            </div>
 	                        </div>
@@ -89,7 +91,7 @@
 
 	                                <div class="row">
 	                                    <div class="col-md-9">
-	                                        <h4><?php echo $alb_row->title; ?></h4>
+	                                        <h4><?php echo $alb_row->album_title; ?></h4>
 
 	                                    </div>
 																			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -111,7 +113,7 @@
 																	?>
 																	<form class="<?php echo $gal_data['comment_status']; ?>" action="<?= base_url()."home";?>" method="post" enctype="multipart/form-data">
 																		<input type="hidden" name="album" value="<?php echo $alb_row->album_id; ?>"/>
-		                                <input placeholder="Comment" type="text" style="height:100px" name="comment" class="form-control" />
+		                                <input placeholder="Comment" type="text" style="height:100px" name="comment" class="form-control" required/>
 		                                <span class="text-mute">Please write your opinion.</span>
 		                                <button class="btn btn-sm btn-primary pull-right comment-btn">Save</button>
 																	</form>

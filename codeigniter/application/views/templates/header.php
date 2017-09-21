@@ -17,8 +17,8 @@
 				<li><a class="<?php echo ($this->uri->segment(1) == "contact") ? "active" : "";?>" href="<?php echo base_url(); ?>contact">Contact</a></li>
 				<li>
 					<div class="search">
-						<form action="<?php echo site_url('search/search_keyword');?>" method = "post">
-							<input type="text" name = "keyword" />
+						<form action="<?php echo base_url();?>result" method = "post">
+							<input type="text" name = "keyword" required/>
 							<input type="submit" value = "Search" />
 						</form>
 					</div>

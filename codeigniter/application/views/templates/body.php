@@ -15,7 +15,7 @@
 				}
         else if($page == "pages/result")
         {
-          $this->load->view($page, $search_result);
+          $this->load->view($page, $res_info);
         }
 				else if($page == "pages/profile")
         {

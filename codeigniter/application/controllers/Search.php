@@ -5,6 +5,9 @@ Class Search Extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Search_model');
+		$this->load->model('Image_model');
+		$this->load->model('User_model');
+		$this->load->model('Comment_model');
 	}
 
 
@@ -13,11 +16,33 @@ Class Search Extends CI_Controller
 		$data['title'] = ucfirst('search result');
 		$keyword = $this->input->post('keyword');
 		$search_result = $this->Search_model->search($keyword);
+		$modal_data = $this->Image_model->get_album_images();
+		/******************* Make comment controller??? ****************/
+		$comment_data = $this->Comment_model->get_comments();
+		$comment_status = '';
+		if($this->session->userdata('uid') !== NULL)
+		{
+			$details = $this->User_model->get_user_by_id($this->session->userdata('uid'));
+			$insert_data = array(
+				'album' => $this->input->post('album'),
+				'name' => $details[0]->name,
+				'comment' => $this->input->post('comment')
+			);
 
-		$page_body = array('page' => 'pages/result', 'search_result' => $search_result);
+			$this->Comment_model->insert_comment($insert_data);
+		}
+/* ??!!?? */
+		else
+		{
+			$comment_status = "hidden";
+		}
+/******************************************************************/
+
+
+		$res_info = array('search_result' => $search_result, 'modal_data' => $modal_data, 'comment_data' => $comment_data,	'comment_status' => $comment_status);
+		$page_body = array('page' => 'pages/result', 'res_info' => $res_info);
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
-//		$this->load->view('pages/result',$data);
 	}
 }
 ?>

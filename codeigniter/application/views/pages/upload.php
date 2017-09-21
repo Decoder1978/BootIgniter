@@ -9,7 +9,7 @@
 						foreach($album_data as $album)
 						{?>
 							<option value="" disabled selected hidden>Select album</option>
-							<option value="<?php echo $album->title;?>"><?php echo ucfirst($album->title);?></option><?php
+							<option value="<?php echo $album->album_title;?>"><?php echo ucfirst($album->album_title);?></option><?php
 						}?>
 						</select>
 

@@ -7,7 +7,7 @@
 		<?php
 			for($i = 0; $i < $gal_data['category_data']['num_rows']; $i++):
 				$rows = $gal_data['category_data']['rows'];
-				$category_title = $rows[$i]->title;?>
+				$category_title = $rows[$i]->category_title;?>
 			<button class="btn btn-default filter-button" data-filter="<?php echo $category_title;?>"><?php echo ucfirst($category_title);?></button>
 			<?php
 			endfor; ?>

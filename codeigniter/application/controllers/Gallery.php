@@ -4,7 +4,6 @@ class Gallery extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->library('pagination');
 		$this->load->model('User_model');
 		$this->load->model('Image_model');
 		$this->load->model('Comment_model');
@@ -19,7 +18,6 @@ class Gallery extends CI_Controller
 		}
 
 		$data['title'] = ucfirst('gallery');
-	//	$pagination = $this->pagination->create_links();
 		$category_data = $this->Image_model->get_category_info();
 		$album_data = $this->Image_model->get_album_info();
 		$img_data = $this->Image_model->get_image('gallery');
@@ -47,7 +45,8 @@ class Gallery extends CI_Controller
 
 /***********************************************/
 
-		$gal_data = array('category_data' => $category_data, 'album_data' => $album_data, 'img_data' => $img_data, 'modal_data' => $modal_data, 'comment_data' => $comment_data, 'comment_status' => $comment_status);
+		$gal_data = array('category_data' => $category_data, 'album_data' => $album_data, 'img_data' => $img_data,
+											'modal_data' => $modal_data, 'comment_data' => $comment_data, 'comment_status' => $comment_status);
 		$page_body = array('page' => 'pages/gallery', 'img_gal' => 'pages/img_gallery', 'gal_data' => $gal_data);
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
