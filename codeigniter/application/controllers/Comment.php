@@ -14,16 +14,6 @@ class Comment extends CI_Controller
 	{
 		$post_data = $this->input->post();
 		$album_path = $this->Comment_model->insert_comment($user_id, $comment);
-
-/*		if ( ! $this->upload->do_upload('comment-input'))
-		{
-
-		}
-
-		else
-		{
-
-		}*/
 	}
 }
 ?>

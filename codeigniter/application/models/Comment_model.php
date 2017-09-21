@@ -25,7 +25,6 @@ class Comment_model extends CI_Model
       $query = $this->db->get();
 
       $info = $query->result_array();
-
       $data = [];
       if($insert_data['comment'] || $insert_data['album'] !== NULL)
       {
@@ -37,9 +36,6 @@ class Comment_model extends CI_Model
         );
         $this->db->insert('comments', $data);
       }
-  //    $this->db->set('comments', $data);
-
-//      $this->db->query('INSERT INTO comments (comment_id) VALUES ('$data['comment_text']') ON DUPLICATE KEY UPDATE (unicode = '$data["unicode"]')');
     }
 }
 
