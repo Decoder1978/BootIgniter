@@ -18,13 +18,11 @@ foreach($gal_data['category_data']['rows'] as $cat_row)
 						<div class="gal_menu">
 							<!-- Modal callout -->
 							<button type="button" class="btn btn-info modal_view" data-toggle="modal" data-target=<?php echo "#myModal".$alb_row->album_id; ?> >DETAILS</button>
-
 							<!-- Modal -->
 							<div class="modal hide fade" id=<?php echo "myModal".$alb_row->album_id; ?> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			            <div class="modal-dialog modal-lg" role="document">
 			                <div class="modal-content">
 			                    <div class="row">
-
 			                        <div class="col-md-8">
 			                            <div id=<?php echo "modal-gallery-carousel".$alb_row->album_id; ?> class="carousel slide modal-gallery-carousel" data-ride="carousel">
 			                                <!-- Indicators -->
@@ -46,7 +44,6 @@ foreach($gal_data['category_data']['rows'] as $cat_row)
 																						}
 																					} ?>
 			                                </ol>
-
 			                                <!-- Wrapper for slides -->
 			                                <div class="carousel-inner">
 																					<?php
@@ -80,8 +77,6 @@ foreach($gal_data['category_data']['rows'] as $cat_row)
 																							<span class="glyphicon glyphicon-chevron-right"></span>
 																						</a>
 			                                </div>
-
-
 			                            </div>
 			                        </div>
 			                        <div class="col-md-4">
@@ -89,7 +84,6 @@ foreach($gal_data['category_data']['rows'] as $cat_row)
 			                                <div class="row">
 			                                    <div class="col-md-9">
 			                                        <h4><?php echo $alb_row->album_title; ?></h4>
-
 			                                    </div>
 																					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			                                </div>
@@ -98,7 +92,6 @@ foreach($gal_data['category_data']['rows'] as $cat_row)
 																		 <?php
 																		 for ($i = 0; $i < count($gal_data['comment_data']); $i++)
 																		 {
-
 																			 if($gal_data['comment_data'][$i]->album_id == $alb_row->album_id)
 																			 { ?>
 																				 <p class="text-success"><?php echo $gal_data['comment_data'][$i]->name; ?></p>
@@ -108,7 +101,6 @@ foreach($gal_data['category_data']['rows'] as $cat_row)
 																	 <?php	}
 																		 }
 																		 ?>
-
 																		 <form class="<?php echo $gal_data['comment_status']; ?>" action="<?= base_url()."gallery";?>" method="post" enctype="multipart/form-data">
 																			 <input type="hidden" name="album" value="<?php echo $alb_row->album_id; ?>"/>
 																			 <input placeholder="Comment" type="text" style="height:100px" name="comment" class="form-control" required/>

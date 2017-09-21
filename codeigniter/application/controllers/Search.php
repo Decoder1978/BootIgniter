@@ -10,7 +10,6 @@ Class Search Extends CI_Controller
 		$this->load->model('Comment_model');
 	}
 
-
 	function search_keyword()
 	{
 		$data['title'] = ucfirst('search result');
@@ -28,7 +27,6 @@ Class Search Extends CI_Controller
 				'name' => $details[0]->name,
 				'comment' => $this->input->post('comment')
 			);
-
 			$this->Comment_model->insert_comment($insert_data);
 		}
 /* ??!!?? */
@@ -37,8 +35,6 @@ Class Search Extends CI_Controller
 			$comment_status = "hidden";
 		}
 /******************************************************************/
-
-
 		$res_info = array('search_result' => $search_result, 'modal_data' => $modal_data, 'comment_data' => $comment_data,	'comment_status' => $comment_status);
 		$page_body = array('page' => 'pages/result', 'res_info' => $res_info);
 		$this->load->view('templates/head', $data);
