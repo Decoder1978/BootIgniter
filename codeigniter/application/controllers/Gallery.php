@@ -42,8 +42,11 @@ class Gallery extends CI_Controller
 		{
 			$comment_status = "hidden";
 		}
+
 /***********************************************/
-		$gal_data = array('category_data' => $category_data, 'album_data' => $album_data, 'img_data' => $img_data, 'modal_data' => $modal_data, 'comment_data' => $comment_data, 'comment_status' => $comment_status);
+
+		$gal_data = array('category_data' => $category_data, 'album_data' => $album_data, 'img_data' => $img_data,
+											'modal_data' => $modal_data, 'comment_data' => $comment_data, 'comment_status' => $comment_status);
 		$page_body = array('page' => 'pages/gallery', 'img_gal' => 'pages/img_gallery', 'gal_data' => $gal_data);
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
