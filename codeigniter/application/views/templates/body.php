@@ -1,6 +1,6 @@
 <body>
-    <div id="mainWrap">
-		<?php $this->load->view('templates/header');?>
+  <?php $this->load->view('templates/header');?>
+  <div id="mainWrap">
 		<div class="container">
 			<div class="row">
 			<?php if($page == "pages/home")
