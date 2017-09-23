@@ -6,8 +6,6 @@ $(document).ready(function() {
      $('.modal, .modal-dialog').show();
  });
 
-
-
 // Closing modal by button or click out of bounds
  $('.modal ').click(function(){
    $("#"+modal_id).removeClass('show').addClass('hide');

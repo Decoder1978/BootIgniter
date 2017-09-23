@@ -10,7 +10,6 @@ Class Search Extends CI_Controller
 		$this->load->model('Comment_model');
 	}
 
-
 	function search_keyword()
 	{
 		$data['title'] = ucfirst('search result');
@@ -28,7 +27,6 @@ Class Search Extends CI_Controller
 				'name' => $details[0]->name,
 				'comment' => $this->input->post('comment')
 			);
-
 			$this->Comment_model->insert_comment($insert_data);
 		}
 /* ??!!?? */

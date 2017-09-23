@@ -31,7 +31,6 @@ class Home extends CI_Controller
 				'name' => $details[0]->name,
 				'comment' => $this->input->post('comment')
 			);
-
 			$this->Comment_model->insert_comment($insert_data);
 		}
 /* ??!!?? */

@@ -24,7 +24,6 @@ class Upload extends CI_Controller
 		$data['title'] = ucfirst('upload');
 		$this->load->view('templates/head', $data);
 
-
 		if ( ! $this->upload->do_upload('userfile'))
 		{
 			$js_list = array("upload_modal.js");
@@ -35,7 +34,6 @@ class Upload extends CI_Controller
 			'album_data' => $album_data, 'uname' => $details[0]->name, 'uemail' => $details[0]->email, 'error' => $this->upload->display_errors());
 			$this->load->view('templates/body', $page_body);
 		}
-
 		else
 		{
       $details = $this->session->flashdata('details');
