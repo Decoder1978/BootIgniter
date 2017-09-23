@@ -24,7 +24,6 @@ class Upload extends CI_Controller
 		$data['title'] = ucfirst('upload');
 		$this->load->view('templates/head', $data);
 
-
 		if ( ! $this->upload->do_upload('userfile'))
 		{
       $album_data = $this->session->flashdata('album_data');
@@ -33,7 +32,6 @@ class Upload extends CI_Controller
 			$page_body = array('page' => 'pages/profile', 'sub_page' => 'pages/upload', 'album_data' => $album_data, 'uname' => $details[0]->name, 'uemail' => $details[0]->email, 'error' => $this->upload->display_errors());
 			$this->load->view('templates/body', $page_body);
 		}
-
 		else
 		{
       $details = $this->session->flashdata('details');
