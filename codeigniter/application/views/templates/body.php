@@ -1,6 +1,6 @@
 <body>
-    <div id="mainWrap">
-		<?php $this->load->view('templates/header');?>
+  <?php $this->load->view('templates/header');?>
+  <div id="mainWrap">
 		<div class="container">
 			<div class="row">
 			<?php if($page == "pages/home")
@@ -30,5 +30,11 @@
 		</div>
 	</div>
 	<?php $this->load->view('templates/footer'); ?>
-	<?php $this->load->view('templates/ender-scripts'); ?>
+
 </body>
+<?php
+if($page == "pages/home" || $page == "pages/gallery" || $page == "pages/result")
+{
+  $this->load->view('templates/ender-scripts', $js_to_load);
+}
+ ?>

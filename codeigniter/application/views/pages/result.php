@@ -3,7 +3,7 @@
 <?php foreach($res_info["search_result"] as $row) { ?>
     	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
         <h4><?php echo $row->album_title; ?></h4>
-    		<h3><?php echo $row->image_title; ?></h3>
+    		<h5><?php echo $row->image_title; ?></h5>
         <a class="thumbnail modal_view" href="#" data-image-id="<?php echo $row->image_id;?>" data-toggle="modal" data-title="<?php echo $row->image_title;?>" data-target=<?php echo "#myModal".$row->album_id; ?>>
           <img src="<?php echo base_url().$row->full_path;?>" alt="<?php echo $row->alt;?>" class="img-responsive">
         </a>
@@ -14,13 +14,13 @@
 
 
 					<!-- Modal -->
-					<div class="modal hide fade" id=<?php echo "myModal".$row->album_id; ?> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="portfolio-modal modal hide fade" id=<?php echo "myModal".$row->album_id; ?> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	            <div class="modal-dialog modal-lg" role="document">
 	                <div class="modal-content">
 	                    <div class="row">
 
 	                        <div class="col-md-8">
-	                            <div id=<?php echo "modal-search-carousel".$row->album_id; ?> class="carousel slide modal-carousel" data-ride="carousel">
+	                            <div id=<?php echo "modal-carousel".$row->album_id; ?> class="carousel slide modal-carousel" data-ride="carousel">
 	                                <!-- Indicators -->
 	                                <ol class="carousel-indicators">
 																			<?php
@@ -31,10 +31,10 @@
 																				{
 																						if ($prev_count == 0)
 																						{  ?>
-																							<li data-target=<?php echo "#modal-search-carousel".$row->album_id; ?> data-slide-to="<?php echo $i-1; ?>" class="active"></li>
+																							<li data-target=<?php echo "#modal-carousel".$row->album_id; ?> data-slide-to="<?php echo $i-1; ?>" class="active"></li>
 																			<?php	}
 																				else { ?>
-																							<li data-target=<?php echo "#modal-search-carousel".$row->album_id; ?> data-slide-to="<?php echo $i-1; ?>"></li>
+																							<li data-target=<?php echo "#modal-carousel".$row->album_id; ?> data-slide-to="<?php echo $i-1; ?>"></li>
 																			<?php	 }
 																				$prev_count = $i;
 																				}
@@ -52,7 +52,7 @@
 																							if ($prev_num == 0)
 																							{ ?>
 																							<div class="item active">
-																									<img src="<?php echo base_url().'/'.$res_info['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $res_info['modal_data'][$j-1]->alt; ?>" >
+																									<img class="lazy_load" src="<?php echo base_url().'/'.$res_info['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $res_info['modal_data'][$j-1]->alt; ?>" >
 																									<h4><?php echo $res_info['modal_data'][$j-1]->image_title; ?></h4>
 																							</div>
 																				<?php
@@ -60,7 +60,7 @@
 																					else
 																							{ ?>
 																							<div class="item">
-																									<img src="<?php echo base_url().'/'.$res_info['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $res_info['modal_data'][$j-1]->alt; ?>" >
+																									<img class="lazy_load" src="<?php echo base_url().'/'.$res_info['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $res_info['modal_data'][$j-1]->alt; ?>" >
 																									<h4><?php echo $res_info['modal_data'][$j-1]->image_title; ?></h4>
 																							</div>
 																				<?php	}
@@ -69,10 +69,10 @@
 																				} ?>
 
 	                                </div>
-                                  <a class="left carousel-control" data-slide="prev" onclick="$('<?php echo "#modal-search-carousel".$row->album_id; ?>').carousel('prev')">
+                                  <a class="left carousel-control" data-slide="prev" onclick="$('<?php echo "#modal-carousel".$row->album_id; ?>').carousel('prev')">
                                     <span class="glyphicon glyphicon-chevron-left"></span>
                                   </a>
-                                  <a class="right carousel-control" data-slide="next" onclick="$('<?php echo "#modal-search-carousel".$row->album_id; ?>').carousel('next')">
+                                  <a class="right carousel-control" data-slide="next" onclick="$('<?php echo "#modal-carousel".$row->album_id; ?>').carousel('next')">
                                     <span class="glyphicon glyphicon-chevron-right"></span>
                                   </a>
 

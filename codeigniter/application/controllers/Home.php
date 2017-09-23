@@ -40,9 +40,10 @@ class Home extends CI_Controller
 			$comment_status = "hidden";
 		}
 /******************************************************************/
-
-		$gal_data = array('album_data' => $album_data, 'img_data' => $img_data, 'modal_data' => $modal_data, 'comment_data' => $comment_data,	'comment_status' => $comment_status);
-		$page_body = array('page' => 'pages/home', 'nested_home_gal' => 'pages/home_gal', 'gal_data' => $gal_data);
+		$js_list = array("home-carousel.js", "gallery_modal.js");
+		$gal_data = array('album_data' => $album_data, 'img_data' => $img_data,	'modal_data' => $modal_data,
+											'comment_data' => $comment_data,	'comment_status' => $comment_status);
+		$page_body = array('js_to_load' => $js_list, 'page' => 'pages/home', 'nested_home_gal' => 'pages/home_gal', 'modal_page' => 'pages/modal', 'gal_data' => $gal_data);
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
 	}

@@ -9,7 +9,7 @@ Class Upload_model Extends CI_Model
 
 	function show_albums()
 	{
-    $this->db->select('title');
+    $this->db->select('album_title');
     $query = $this->db->get('gallery_album');
 		return $query->result();
 	}
@@ -17,7 +17,7 @@ Class Upload_model Extends CI_Model
   function get_album_path($album)
   {
     $this->db->select('album_path');
-    $this->db->like('title',  $album);
+    $this->db->like('album_title',  $album);
     $query = $this->db->get('gallery_album');
     return $query->result_array();
 
@@ -27,7 +27,7 @@ Class Upload_model Extends CI_Model
 	{
     $this->db->select('ga.album_id');
     $this->db->select('ga.album_path');
-    $this->db->like('ga.title',  $select);
+    $this->db->like('ga.album_title',  $select);
     $this->db->from('gallery_album ga');
     $this->db->join('gallery_image gi', 'gi.album_id = ga.album_id');
     $query = $this->db->get();
@@ -35,7 +35,7 @@ Class Upload_model Extends CI_Model
     $info = $query->result_array();
     $data = array(
           'alt' => $image_data['raw_name'],
-          'title' => ucfirst(str_replace("_", " ", $image_data['raw_name'])),
+          'image_title' => ucfirst(str_replace("_", " ", $image_data['raw_name'])),
           'full_path' => $info[0]['album_path'].'/'.$image_data['file_name'],
           'album_id' => $info[0]['album_id']
     );

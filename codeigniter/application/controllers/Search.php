@@ -38,9 +38,9 @@ Class Search Extends CI_Controller
 		}
 /******************************************************************/
 
-
+		$js_list = array("gallery_modal.js");
 		$res_info = array('search_result' => $search_result, 'modal_data' => $modal_data, 'comment_data' => $comment_data,	'comment_status' => $comment_status);
-		$page_body = array('page' => 'pages/result', 'res_info' => $res_info);
+		$page_body = array('js_to_load' => $js_list, 'page' => 'pages/result', 'res_info' => $res_info);
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
 	}

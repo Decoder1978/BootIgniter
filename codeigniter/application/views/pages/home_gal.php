@@ -7,9 +7,8 @@
 		foreach($gal_data['img_data']['rows'] as $img_row)
 		{
 			if ($img_row->album_id == $alb_row->album_id)
-				{
-					?>
-			<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				{ ?>
+				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
 				<h4><?php echo ucfirst($alb_row->album_title); ?></h4>
 				<a class="thumbnail modal_view" href="<?php echo $alb_row->album_title; ?>" data-image-id="<?php echo $img_row->image_id; ?>" data-toggle="modal" data-title="<?php echo $img_row->image_title; ?>" data-target=<?php echo "#myModal".$alb_row->album_id; ?> >
 					<img src="<?php echo base_url().$img_row->full_path; ?>" alt="<?php echo $img_row->alt; ?>" class="img-responsive">
@@ -18,9 +17,8 @@
 					<!-- Modal callout -->
 					<button type="button" class="btn btn-info modal_view" data-toggle="modal" data-target=<?php echo "#myModal".$alb_row->album_id; ?> >DETAILS</button>
 
-
 					<!-- Modal -->
-					<div class="modal hide fade" id=<?php echo "myModal".$alb_row->album_id; ?> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="portfolio-modal modal hide fade" id=<?php echo "myModal".$alb_row->album_id; ?> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	            <div class="modal-dialog modal-lg" role="document">
 	                <div class="modal-content">
 	                    <div class="row">
@@ -58,7 +56,7 @@
 																							if ($prev_num == 0)
 																							{ ?>
 																							<div class="item active">
-																									<img src="<?php echo base_url().'/'.$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
+																									<img src="" class="lazy_load" data-src="<?php echo base_url().'/'.$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
 																									<h4><?php echo $gal_data['modal_data'][$j-1]->image_title; ?></h4>
 																							</div>
 																				<?php
@@ -66,7 +64,7 @@
 																					else
 																							{ ?>
 																							<div class="item">
-																									<img src="<?php echo base_url().'/'.$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
+																									<img src="" class="lazy_load" data-src="<?php echo base_url().'/'.$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
 																									<h4><?php echo $gal_data['modal_data'][$j-1]->image_title; ?></h4>
 																							</div>
 																				<?php	}

@@ -7,23 +7,36 @@ class Comment extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Comment_model');
-    $this->load->library('session');
+		$this->load->model('User_model');
 	}
 
-	public function do_comment()
+	public function index()
 	{
-		$post_data = $this->input->post();
-		$album_path = $this->Comment_model->insert_comment($user_id, $comment);
-
-/*		if ( ! $this->upload->do_upload('comment-input'))
+		/******************* Make comment controller??? ****************/
+		$comment_data = $this->Comment_model->get_comments();
+		$comment_status = '';
+		if($this->session->userdata('uid') !== NULL)
 		{
+			$details = $this->User_model->get_user_by_id($this->session->userdata('uid'));
+			$insert_data = array(
+				'album' => $this->input->post('album'),
+				'name' => $details[0]->name,
+				'comment' => $this->input->post('comment')
+			);
 
+			$this->Comment_model->insert_comment($insert_data);
 		}
-
+		/* ??!!?? */
 		else
 		{
+			$comment_status = "hidden";
+		}
+		/******************************************************************/
 
-		}*/
+		$comm_data = array('comment_data' => $comment_data, 'comment_status' => $comment_status);
+		$page_body = array('page' => 'pages/moda_comments', 'comm_data' => $comm_data);
+		$this->load->view('templates/head', $data);
+		$this->load->view('templates/body', $page_body);
 	}
 }
 ?>

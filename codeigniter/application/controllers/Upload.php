@@ -27,10 +27,12 @@ class Upload extends CI_Controller
 
 		if ( ! $this->upload->do_upload('userfile'))
 		{
+			$js_list = array("upload_modal.js");
       $album_data = $this->session->flashdata('album_data');
       $details = $this->session->flashdata('details');
       $this->session->set_flashdata('sub_page', 'pages/upload');
-			$page_body = array('page' => 'pages/profile', 'sub_page' => 'pages/upload', 'album_data' => $album_data, 'uname' => $details[0]->name, 'uemail' => $details[0]->email, 'error' => $this->upload->display_errors());
+			$page_body = array('page' => 'pages/profile', 'sub_page' => 'pages/upload', 'js_to_load' => $js_list,
+			'album_data' => $album_data, 'uname' => $details[0]->name, 'uemail' => $details[0]->email, 'error' => $this->upload->display_errors());
 			$this->load->view('templates/body', $page_body);
 		}
 
@@ -39,7 +41,8 @@ class Upload extends CI_Controller
       $details = $this->session->flashdata('details');
 			$this->Upload_model->insert_images($this->upload->data(), $post_data['album_select']);
       $this->session->set_flashdata('sub_page', 'pages/upload_success');
-			$page_body = array('page' => 'pages/profile', 'sub_page' => 'pages/upload_success', 'album_data' => $this->upload->data(), 'uname' => $details[0]->name, 'uemail' => $details[0]->email );
+			$page_body = array('page' => 'pages/profile', 'sub_page' => 'pages/upload_success',
+												'album_data' => $this->upload->data(), 'uname' => $details[0]->name, 'uemail' => $details[0]->email );
 			$this->load->view('templates/body', $page_body);
 		}
 	}
