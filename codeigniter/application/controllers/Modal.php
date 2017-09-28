@@ -1,23 +1,21 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-Class Search Extends CI_Controller
+
+class Modal extends CI_Controller
 {
-	function __construct()
+
+	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Search_model');
+		$this->load->model('Comment_model');
 		$this->load->model('Image_model');
 		$this->load->model('User_model');
-		$this->load->model('Comment_model');
 	}
 
-
-	function search_keyword()
+	public function index()
 	{
-		$data['title'] = ucfirst('search result');
-		$keyword = $this->input->post('keyword');
-		$search_result = $this->Search_model->search($keyword);
+		/******************* Make modal controller??? ****************/
+		$album_data = $this->Image_model->get_album_info();
 		$modal_data = $this->Image_model->get_album_images();
-		/******************* Make comment controller??? ****************/
 		$comment_data = $this->Comment_model->get_comments();
 		$comment_status = '';
 		if($this->session->userdata('uid') !== NULL)
@@ -38,11 +36,11 @@ Class Search Extends CI_Controller
 		}
 /******************************************************************/
 
-		$js_list = array("gallery_modal.js");
-		$res_info = array('search_result' => $search_result, 'modal_data' => $modal_data, 'comment_data' => $comment_data,	'comment_status' => $comment_status);
-		$page_body = array('js_to_load' => $js_list, 'page' => 'pages/result', 'res_info' => $res_info);
-		$this->load->view('templates/head', $data);
-		$this->load->view('templates/body', $page_body);
+		$mod_data = array('album_data' => $album_data, 'modal_data' => $modal_data,	'comment_data' => $comment_data,	'comment_status' => $comment_status);
+		$page_body = array('modal_carousel' => 'pages/modal_carousel', 'modal_comments' => 'pages/modal_comments', 'mod_data' => $mod_data);
+		$this->session->set_flashdata('info', '111');
+	//	$this->load->view('templates/head', $data);
+		$this->load->view('pages/modal', $page_body);
 	}
 }
 ?>

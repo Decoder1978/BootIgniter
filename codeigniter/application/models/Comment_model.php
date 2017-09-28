@@ -25,6 +25,7 @@ class Comment_model extends CI_Model
       $query = $this->db->get();
 
       $info = $query->result_array();
+
       $data = [];
       if($insert_data['comment'] || $insert_data['album'] !== NULL)
       {

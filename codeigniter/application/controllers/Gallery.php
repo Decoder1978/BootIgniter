@@ -42,6 +42,7 @@ class Gallery extends CI_Controller
 		{
 			$comment_status = "hidden";
 		}
+
 /***********************************************/
 		$js_list = array("gallery_filter.js", "gallery_modal.js");
 		$gal_data = array('category_data' => $category_data, 'album_data' => $album_data, 'img_data' => $img_data,

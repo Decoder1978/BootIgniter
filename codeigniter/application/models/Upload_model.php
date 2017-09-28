@@ -20,6 +20,7 @@ Class Upload_model Extends CI_Model
     $this->db->like('album_title',  $album);
     $query = $this->db->get('gallery_album');
     return $query->result_array();
+
   }
 
     function insert_images($image_data, $select)
