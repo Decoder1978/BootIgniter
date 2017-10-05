@@ -1,15 +1,17 @@
 $(document).ready(function(){
-  var num_on_page = 2;
+  var num_on_page = 2;  // number of albums on page
   var temp_num = 1;
   var filter_used = false;
+  var count;
+  var pages_count;
 
   if(!filter_used){
 
-    $(".filter").slice(num_on_page * (temp_num-1), num_on_page * temp_num).show('3000');
-    $(".filter").not($(".filter").slice(num_on_page * (temp_num-1), num_on_page * temp_num)).hide('3000');
+    $(".filter").slice(num_on_page * (temp_num-1), num_on_page * temp_num).show();
+    $(".filter").not($(".filter").slice(num_on_page * (temp_num-1), num_on_page * temp_num)).hide();
 
-    var count = $(".filter").length;
-    var pages_count = Math.ceil(count / num_on_page);
+    count = $(".filter").length;
+    pages_count = Math.ceil(count / num_on_page);
     $('.gal_pagination_top,.gal_pagination_bottom').bootpag({
       total: pages_count,
       page: 1,
@@ -20,8 +22,8 @@ $(document).ready(function(){
       last: '→'
     }).on("page", function(event, num){
         var show_all_pages = $(".filter").slice(num_on_page * (num-1), num_on_page * num);
-        show_all_pages.show('3000');
-        $(".filter").not(show_all_pages).hide('3000');
+        show_all_pages.show();
+        $(".filter").not(show_all_pages).hide();
       });
       filter_used = true;
   }
@@ -33,11 +35,11 @@ $(document).ready(function(){
       {
           //$('.filter').removeClass('hidden');
         //  $('.filter').show('1000');
-        var count = $(".filter").length;
-        var pages_count = Math.ceil(count / num_on_page);
+        count = $(".filter").length;
+        pages_count = Math.ceil(count / num_on_page);
 
-        $(".filter").slice(num_on_page * (temp_num-1), num_on_page * temp_num).show('3000');
-        $(".filter").not($(".filter").slice(num_on_page * (temp_num-1), num_on_page * temp_num)).hide('3000');
+        $(".filter").slice(num_on_page * (temp_num-1), num_on_page * temp_num).show();
+        $(".filter").not($(".filter").slice(num_on_page * (temp_num-1), num_on_page * temp_num)).hide();
 
         $('.gal_pagination_top,.gal_pagination_bottom').bootpag({
           total: pages_count,
@@ -45,8 +47,8 @@ $(document).ready(function(){
           maxVisible: pages_count
         }).on("page", function(event, num){
             var show_all_pages = $(".filter").slice(num_on_page * (num-1), num_on_page * num);
-            show_all_pages.show('3000');
-            $(".filter").not(show_all_pages).hide('3000');
+            show_all_pages.show();
+            $(".filter").not(show_all_pages).hide();
           });
 
           if ($(".filter-button").removeClass("active")) {
@@ -60,13 +62,13 @@ $(document).ready(function(){
 //            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
 //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
 
-          // $(".filter").not('.'+value).hide('3000');
-          // $('.filter').filter('.'+value).show('3000');
-          var count = $("." + value).length;
-          var pages_count = Math.ceil(count / num_on_page);
+          // $(".filter").not('.'+value).hide();
+          // $('.filter').filter('.'+value).show();
+          count = $("." + value).length;
+          pages_count = Math.ceil(count / num_on_page);
 
-          $(".filter").filter("." + value).slice(num_on_page * (temp_num-1), num_on_page * temp_num).show('3000');
-          $(".filter").not($(".filter").filter("." + value).slice(num_on_page * (temp_num-1), num_on_page * temp_num)).hide('3000');
+          $(".filter").filter("." + value).slice(num_on_page * (temp_num-1), num_on_page * temp_num).show();
+          $(".filter").not($(".filter").filter("." + value).slice(num_on_page * (temp_num-1), num_on_page * temp_num)).hide();
 
           $('.gal_pagination_top,.gal_pagination_bottom').bootpag({
             total: pages_count,
@@ -74,8 +76,8 @@ $(document).ready(function(){
             maxVisible: pages_count
           }).on("page", function(event, num){
               var show_filter_pages = $(".filter").filter("." + value).slice(num_on_page * (num-1), num_on_page * num);
-              show_filter_pages.show('3000');
-              $(".filter").not(show_filter_pages).hide('3000');
+              show_filter_pages.show();
+              $(".filter").not(show_filter_pages).hide();
             });
 
 
@@ -89,38 +91,3 @@ $(document).ready(function(){
   });
 
 });
-
-
-// $(document).ready(function(){
-//
-//     $(".filter-button").click(function(){
-//         var value = $(this).attr('data-filter');
-//         console.log(value);
-//         if(value == "all")
-//         {
-//             //$('.filter').removeClass('hidden');
-//             $('.filter').show('1000');
-//
-//             if ($(".filter-button").removeClass("active")) {
-//                 $(this).removeClass("active");
-//               }
-//
-//               $(this).addClass("active");
-//         }
-//         else
-//         {
-// //            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
-// //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
-//
-//             $(".filter").not('.'+value).hide('3000');
-//             $('.filter').filter('.'+value).show('3000');
-//
-//             if ($(".filter-button").removeClass("active")) {
-//                 $(this).removeClass("active");
-//               }
-//
-//               $(this).addClass("active");
-//
-//         }
-//     });
-// });

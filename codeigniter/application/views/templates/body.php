@@ -42,5 +42,4 @@
 if($page == "pages/home" || $page == "pages/gallery" || $page == "pages/result")
 {
   $this->load->view('templates/ender-scripts', $js_to_load);
-}
- ?>
+} ?>
