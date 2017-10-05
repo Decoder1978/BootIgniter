@@ -13,12 +13,10 @@
 					$this->load->view($page, $gal_data['category_data']);
           ?>
           <div class="gal_pagination_top"></div>
-          <div id="gallery" class="gallery_list col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <?php
 					$this->load->view($img_gal, $gal_data);
           ?>
-          </div>
-          <div class="gal_pagination_bottom"></div>
+          <!-- <div class="gal_pagination_bottom"></div> -->
           <?php
 				}
         else if($page == "pages/result")

@@ -1,3 +1,4 @@
+<div class="gallery_list col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <?php
 foreach($gal_data['category_data']['rows'] as $cat_row)
 {
@@ -9,7 +10,7 @@ foreach($gal_data['category_data']['rows'] as $cat_row)
 			{
 				if ($img_row->album_id == $alb_row->album_id)
 				{?>
-					<div class=<?php echo "'gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 thumb filter page $cat_row->category_title'"; ?> >
+					<div class=<?php echo "'gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 thumb filter $cat_row->category_title'"; ?> style="display: none;">
 						<h4><?php echo ucfirst($alb_row->album_title); ?></h4>
 						<a class="thumbnail modal_view" href="<?php echo $alb_row->album_title; ?>" data-image-id="<?php echo $img_row->image_id;?>" data-toggle="modal" data-title="<?php echo $img_row->image_title;?>" data-target=<?php echo "#myModal".$alb_row->album_id; ?> >
 							<img src="<?php echo base_url().$img_row->full_path;?>" alt="<?php echo $img_row->alt;?>" class="img-responsive">
@@ -129,3 +130,4 @@ foreach($gal_data['category_data']['rows'] as $cat_row)
 	}
 }
 	?>
+</div>
