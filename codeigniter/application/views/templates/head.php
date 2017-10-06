@@ -12,7 +12,4 @@
 	<link href="<?php echo base_url();?>assets/css/sticky-footer.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>assets/css/custom-styles.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>assets/css/timer_carousel.css" rel="stylesheet">
-	<script src="<?php echo base_url();?>assets/js/jquery-1.12.4.min.js"></script>
-	<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-
 </head>

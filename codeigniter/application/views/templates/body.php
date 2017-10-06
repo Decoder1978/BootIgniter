@@ -39,7 +39,10 @@
 
 </body>
 <?php
-if($page == "pages/home" || $page == "pages/gallery" || $page == "pages/result")
-{
-  $this->load->view('templates/ender-scripts', $js_to_load);
-} ?>
+  $this->load->view('templates/main-scripts');
+
+  if($page == "pages/home" || $page == "pages/gallery" || $page == "pages/result" || $page == "pages/profile")
+  {
+    $this->load->view('templates/ender-scripts', $js_to_load);
+  }
+?>

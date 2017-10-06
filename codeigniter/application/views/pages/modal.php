@@ -64,7 +64,6 @@
                       <div class="row">
                           <div class="col-md-9">
                               <h4><?php echo $alb_row->album_title; ?></h4>
-
                           </div>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                       </div>
@@ -84,7 +83,7 @@
                      }
                      ?>
 
-                     <form class="<?php echo $gal_data['comment_status']; ?>" action="<?= base_url()."gallery";?>" method="post" enctype="multipart/form-data">
+                     <form class="comment_section <?php echo $gal_data['comment_status']; ?>" action="<?= base_url()."gallery";?>" method="post" enctype="multipart/form-data">
                        <input type="hidden" name="album" value="<?php echo $alb_row->album_id; ?>"/>
                        <input placeholder="Comment" type="text" style="height:100px" name="comment" class="form-control" required/>
                        <span class="text-mute">Please write your opinion.</span>

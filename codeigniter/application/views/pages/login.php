@@ -23,7 +23,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4 text-center">	
+		<div class="col-md-4 col-md-offset-4 text-center">
 		New User? <a href="<?php echo base_url(); ?>signup">Sign Up Here</a>
 		</div>
 	</div>

@@ -17,12 +17,13 @@ class Profile extends CI_Controller
 		}
 
 		$data['title'] = ucfirst('profile');
+		$js_list = array("upload_modal.js");
 		$details = $this->User_model->get_user_by_id($this->session->userdata('uid'));
 		$album_data = $this->Upload_model->show_albums();
 		$this->session->set_flashdata('album_data', $album_data);
 		$this->session->set_flashdata('details', $details);
 		$sub_page = $this->session->flashdata('sub_page');
-		$page_body = array('page' => 'pages/profile', 'sub_page' => $sub_page = 'pages/upload', 'album_data' => $album_data, 'uname' => $details[0]->name, 'uemail' => $details[0]->email, 'error' => '');
+		$page_body = array('js_to_load' => $js_list, 'page' => 'pages/profile', 'sub_page' => $sub_page = 'pages/upload', 'album_data' => $album_data, 'uname' => $details[0]->name, 'uemail' => $details[0]->email, 'error' => '');
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
 	}
