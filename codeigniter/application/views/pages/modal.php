@@ -1,3 +1,4 @@
+
 <div class="portfolio-modal modal hide fade" id=<?php echo "myModal".$alb_row->album_id; ?> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -8,10 +9,12 @@
                       <ol class="carousel-indicators gal-c-i">
                           <?php
                           $prev_count = NULL;
-                          for($i = 1; $i < count($gal_data['modal_data']); $i++)
+                          $arr_length = count($gal_data['modal_data']);
+                          for($i = 1; $i <= $arr_length; $i++)
                           {
                             if ($gal_data['modal_data'][$i-1]->album_id == $alb_row->album_id)
                             {
+
                                 if ($prev_count == NULL)
                                 {  ?>
                                   <li data-target=<?php echo "#modal-carousel".$alb_row->album_id; ?> data-slide-to="<?php echo $i-1; ?>" class="active"></li>
@@ -28,10 +31,12 @@
                       <div class="carousel-inner">
                           <?php
                             $prev_num = NULL;
-                            for($j = 1; $j < count($gal_data['modal_data']); $j++)
+                            $arr_length = count($gal_data['modal_data']);
+                            for($j = 1; $j <= $arr_length; $j++)
                             {
                               if ($gal_data['modal_data'][$j-1]->album_id == $alb_row->album_id)
                               {
+                            //    var_dump($gal_data['modal_data']);
                                   if ($prev_num == NULL)
                                   { ?>
                                   <div class="item active">
@@ -70,7 +75,8 @@
                      <hr/>
                      <h5><b>Comments:</b></h5>
                      <?php
-                     for ($i = 0; $i < count($gal_data['comment_data']); $i++)
+                     $comm_length = count($gal_data['comment_data']);
+                     for ($i = 0; $i < $comm_length; $i++)
                      {
 
                        if($gal_data['comment_data'][$i]->album_id == $alb_row->album_id)
@@ -85,7 +91,7 @@
 
                      <form class="comment_section <?php echo $gal_data['comment_status']; ?>" action="<?= base_url()."gallery";?>" method="post" enctype="multipart/form-data">
                        <input type="hidden" name="album" value="<?php echo $alb_row->album_id; ?>"/>
-                       <input placeholder="Comment" type="text" style="height:100px" name="comment" class="form-control" required/>
+                       <textarea placeholder="Comment" type="text" style="height:100px" name="comment" class="form-control" maxlength="255" required></textarea>
                        <span class="text-mute">Please write your opinion.</span>
                        <button class="btn btn-sm btn-primary pull-right comment-btn">Save</button>
                      </form>

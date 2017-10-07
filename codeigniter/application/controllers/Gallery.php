@@ -21,9 +21,9 @@ class Gallery extends CI_Controller
 		$category_data = $this->Image_model->get_category_info();
 		$album_data = $this->Image_model->get_album_info();
 		$img_data = $this->Image_model->get_image('gallery');
+		/**************************************/
 		$modal_data = $this->Image_model->get_album_images();
 		$comment_data = $this->Comment_model->get_comments();
-		/**************************************/
 		$comment_status = '';
 		if($this->session->userdata('uid') !== NULL)
 		{
@@ -46,7 +46,7 @@ class Gallery extends CI_Controller
 /***********************************************/
 		$js_list = array("gallery_filter.js", "gallery_modal.js");
 		$gal_data = array('category_data' => $category_data, 'album_data' => $album_data, 'img_data' => $img_data,
-											'modal_data' => $modal_data, 'comment_data' => $comment_data, 'comment_status' => $comment_status);
+											'modal_data' => $modal_data, 'modal_page' => 'pages/modal', 'comment_data' => $comment_data, 'comment_status' => $comment_status);
 		$page_body = array('js_to_load' => $js_list, 'page' => 'pages/gallery', 'img_gal' => 'pages/img_gallery', 'gal_data' => $gal_data);
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);

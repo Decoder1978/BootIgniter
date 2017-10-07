@@ -5,10 +5,12 @@
 			<form action="<?= site_url('Upload/do_upload');?>" method="post" enctype="multipart/form-data">
 				<div class="input-group image-preview">
 
-						<select required class="form-control" name="album_select"><?php
+						<select required class="form-control" name="album_select" required>
+							<option value="">Select album</option>
+							<?php
 						foreach($album_data as $album)
 						{?>
-							<option value="" disabled selected hidden>Select album</option>
+
 							<option value="<?php echo $album->album_title;?>"><?php echo ucfirst($album->album_title);?></option><?php
 						}?>
 						</select>

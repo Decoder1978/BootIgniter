@@ -16,9 +16,9 @@ class Upload extends CI_Controller
 
 		$config['upload_path']   = './'.$album_path[0]['album_path'].'/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']      = 3000;
-		$config['max_width']     = 1600;
-		$config['max_height']    = 1200;
+		$config['max_size']      = 5000;
+		$config['max_width']     = 1920;
+		$config['max_height']    = 1080;
 		$this->load->library('upload', $config);
 
 		$data['title'] = ucfirst('upload');
@@ -39,8 +39,9 @@ class Upload extends CI_Controller
 		{
       $details = $this->session->flashdata('details');
 			$this->Upload_model->insert_images($this->upload->data(), $post_data['album_select']);
+			$js_list = array("upload_modal.js");
       $this->session->set_flashdata('sub_page', 'pages/upload_success');
-			$page_body = array('page' => 'pages/profile', 'sub_page' => 'pages/upload_success',
+			$page_body = array('js_to_load' => $js_list, 'page' => 'pages/profile', 'sub_page' => 'pages/upload_success',
 												'album_data' => $this->upload->data(), 'uname' => $details[0]->name, 'uemail' => $details[0]->email );
 			$this->load->view('templates/body', $page_body);
 		}

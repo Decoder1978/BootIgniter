@@ -42,8 +42,7 @@ class Home extends CI_Controller
 /******************************************************************/
 		$js_list = array("home-carousel.js", "gallery_modal.js");
 		$gal_data = array('album_data' => $album_data, 'img_data' => $img_data,	'modal_data' => $modal_data,
-											'modal_page' => 'pages/modal', 'modal_carousel' => 'pages/modal_carousel', 'modal_comments' => 'pages/modal_comments',
-											'comment_data' => $comment_data,	'comment_status' => $comment_status);
+											'modal_page' => 'pages/modal', 'comment_data' => $comment_data,	'comment_status' => $comment_status);
 		$page_body = array('js_to_load' => $js_list, 'page' => 'pages/home', 'home_gal' => 'pages/home_gal', 'gal_data' => $gal_data);
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
