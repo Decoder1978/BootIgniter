@@ -16,8 +16,8 @@ class Home extends CI_Controller
 			// Whoops, we don't have a page for that!
 			show_404();
 		}
-		$data['title'] = ucfirst('home');
-		$img_data = $this->Image_model->get_image('home');
+		$data['title'] = ucfirst($this->uri->segment(1));
+		$img_data = $this->Image_model->get_image($this->uri->segment(1));
 		$album_data = $this->Image_model->get_album_info();
 		/******************* Make modal controller??? ****************/
 		$modal_data = $this->Image_model->get_album_images();
@@ -26,13 +26,13 @@ class Home extends CI_Controller
 		if($this->session->userdata('uid') !== NULL)
 		{
 			$details = $this->User_model->get_user_by_id($this->session->userdata('uid'));
-			$insert_data = array(
-				'album' => $this->input->post('album'),
-				'name' => $details[0]->name,
-				'comment' => $this->input->post('comment')
-			);
 
-			$this->Comment_model->insert_comment($insert_data);
+				$insert_data = array(
+					'album' => $this->input->post('album'),
+					'name' => $details[0]->name,
+					'comment' => $this->input->post('comment')
+				);
+				$this->Comment_model->insert_comment($insert_data);
 		}
 /* ??!!?? */
 		else
@@ -40,9 +40,10 @@ class Home extends CI_Controller
 			$comment_status = "hidden";
 		}
 /******************************************************************/
-		$js_list = array("home-carousel.js", "gallery_modal.js");
+		$js_list = array("home-carousel.js", "gallery_modal.js", "comment_pagination.js");
 		$gal_data = array('album_data' => $album_data, 'img_data' => $img_data,	'modal_data' => $modal_data,
-											'modal_page' => 'pages/modal', 'comment_data' => $comment_data,	'comment_status' => $comment_status);
+											'modal_page' => 'pages/modal', 'modal_carousel' => 'pages/modal_carousel', 'modal_comments' => 'pages/modal_comments',
+											'comment_data' => $comment_data,	'comment_status' => $comment_status);
 		$page_body = array('js_to_load' => $js_list, 'page' => 'pages/home', 'home_gal' => 'pages/home_gal', 'gal_data' => $gal_data);
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
@@ -54,6 +55,6 @@ class Home extends CI_Controller
         $data = array('login' => '', 'uname' => '', 'uid' => '');
         $this->session->unset_userdata($data);
         $this->session->sess_destroy();
-		redirect('home/index');
+		redirect(base_url().'home');
 	}
 }

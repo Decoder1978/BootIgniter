@@ -17,10 +17,10 @@ class Gallery extends CI_Controller
 			show_404();
 		}
 
-		$data['title'] = ucfirst('gallery');
+		$data['title'] = ucfirst($this->uri->segment(1));
 		$category_data = $this->Image_model->get_category_info();
 		$album_data = $this->Image_model->get_album_info();
-		$img_data = $this->Image_model->get_image('gallery');
+		$img_data = $this->Image_model->get_image($this->uri->segment(1));
 		/**************************************/
 		$modal_data = $this->Image_model->get_album_images();
 		$comment_data = $this->Comment_model->get_comments();
@@ -29,13 +29,13 @@ class Gallery extends CI_Controller
 		{
 			$details = $this->User_model->get_user_by_id($this->session->userdata('uid'));
 
-			$insert_data = array(
-				'album' => $this->input->post('album'),
-				'name' => $details[0]->name,
-				'comment' => $this->input->post('comment')
-			);
+				$insert_data = array(
+					'album' => $this->input->post('album'),
+					'name' => $details[0]->name,
+					'comment' => $this->input->post('comment')
+				);
+				$this->Comment_model->insert_comment($insert_data);
 
-			$this->Comment_model->insert_comment($insert_data);
 		}
 /* ??!!?? */
 		else
@@ -44,21 +44,13 @@ class Gallery extends CI_Controller
 		}
 
 /***********************************************/
-		$js_list = array("gallery_filter.js", "gallery_modal.js");
-		$gal_data = array('category_data' => $category_data, 'album_data' => $album_data, 'img_data' => $img_data,
-											'modal_data' => $modal_data, 'modal_page' => 'pages/modal', 'comment_data' => $comment_data, 'comment_status' => $comment_status);
+		$js_list = array("gallery_filter.js", "gallery_modal.js", "comment_pagination.js");
+		$gal_data = array('category_data' => $category_data, 'album_data' => $album_data, 'img_data' => $img_data, 'modal_data' => $modal_data,
+											'modal_page' => 'pages/modal', 'modal_carousel' => 'pages/modal_carousel', 'modal_comments' => 'pages/modal_comments',
+											'comment_data' => $comment_data, 'comment_status' => $comment_status);
 		$page_body = array('js_to_load' => $js_list, 'page' => 'pages/gallery', 'img_gal' => 'pages/img_gallery', 'gal_data' => $gal_data);
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
-	}
-
-	function logout()
-	{
-		// destroy session
-        $data = array('login' => '', 'uname' => '', 'uid' => '');
-        $this->session->unset_userdata($data);
-        $this->session->sess_destroy();
-		redirect('home/index');
 	}
 }
 ?>

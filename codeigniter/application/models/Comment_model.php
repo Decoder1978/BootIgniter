@@ -29,6 +29,7 @@ class Comment_model extends CI_Model
       $data = [];
       if($insert_data['comment'] || $insert_data['album'] !== NULL)
       {
+
         $data = array(
               'comment_text' => $insert_data['comment'],
               'date' => date('Y-m-d H:i:s'),
@@ -36,6 +37,7 @@ class Comment_model extends CI_Model
               'album_id' => $insert_data['album']
         );
         $this->db->insert('comments', $data);
+        redirect(base_url());
       }
     }
 }

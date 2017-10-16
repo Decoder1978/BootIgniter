@@ -31,7 +31,7 @@ class Image_model extends CI_Model
 	{
 		$this->db->distinct();
 		$this->db->group_by('album_id');
-		if($page == 'home')
+		if($page == 'home' || $page == '')
 			$this->db->limit(4);
     $query = $this->db->get('gallery_image');
 		$result = $query->result();
