@@ -1,3 +1,10 @@
+<script>
+var message = "<?php echo $this->session->flashdata('msg'); ?>";
+	if(message !== ""){
+		alert(message);
+	}
+</script>
+
 <!-- The carousel -->
 <div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel">
 	<!-- Indicators -->

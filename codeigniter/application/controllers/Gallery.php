@@ -29,12 +29,16 @@ class Gallery extends CI_Controller
 		{
 			$details = $this->User_model->get_user_by_id($this->session->userdata('uid'));
 
-				$insert_data = array(
-					'album' => $this->input->post('album'),
-					'name' => $details[0]->name,
-					'comment' => $this->input->post('comment')
-				);
+			$insert_data = array(
+				'album' => $this->input->post('album'),
+				'name' => $details[0]->name,
+				'comment' => $this->input->post('comment')
+			);
+			if($this->input->post('comment'))
+			{
+				$this->session->set_flashdata('msg',"Your message has been sent!");
 				$this->Comment_model->insert_comment($insert_data);
+			}
 
 		}
 /* ??!!?? */

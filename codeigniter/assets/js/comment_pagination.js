@@ -14,7 +14,7 @@ $(document).ready(function(){
     $('.com_pagination_top').bootpag({
       total: pages_count,
       page: 1,
-      maxVisible: pages_count,
+      maxVisible: 4,
       leaps: false,
       firstLastUse: true,
       first: '←',
@@ -28,10 +28,13 @@ $(document).ready(function(){
         $(".com_data-"+album_id).not(com_page).hide();
       }
       filter_used = num;
+
     });
+    $('.com_pagination_top ul').addClass('pagination-sm');
   }
 
   $(".modal_view").click(function(){
+
     album_id = $(this).attr('data-target').replace(/\#myModal/g, '');
 
     com_page = $(".com_data-"+album_id).slice(num_on_page * (temp_num-1), num_on_page * temp_num);
