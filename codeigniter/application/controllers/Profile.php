@@ -19,6 +19,7 @@ class Profile extends CI_Controller
 		$data['title'] = ucfirst('profile');
 		$js_list = array("upload_modal.js");
 		$details = $this->User_model->get_user_by_id($this->session->userdata('uid'));
+		if(!$details) redirect(base_url()); // if enter profile on new browser load
 		$album_data = $this->Upload_model->show_albums();
 		$this->session->set_flashdata('album_data', $album_data);
 		$this->session->set_flashdata('details', $details);

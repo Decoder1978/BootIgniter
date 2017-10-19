@@ -7,6 +7,7 @@ class Home extends CI_Controller
 		$this->load->model('User_model');
 		$this->load->model('Image_model');
 		$this->load->model('Comment_model');
+
 	}
 
 	function index()

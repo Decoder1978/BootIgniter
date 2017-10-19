@@ -1,14 +1,13 @@
 $(document).ready(function(){
   $('#search').on("click",(function(e){
   $(".form-group").addClass("sb-search-open");
-    e.stopPropagation()
-    $(".navbar-right").css('min-width', '250px');
+    e.stopPropagation();
   }));
    $(document).on("click", function(e) {
     if ($(e.target).is("#search") === false && $(".form-control").val().length == 0) {
       $(".form-group").removeClass("sb-search-open");
       $("#search .form-control").css('border', 'none');
-      $(".search-label").css({'background': '#5BC0DE', 'color': '#fff'});
+      $(".search-label").css({'background': '#A84', 'color': '#fff'});
       $(".navbar-right").css('min-width', '40px');
     }
   });

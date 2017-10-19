@@ -11,13 +11,7 @@
 				else if($page == "pages/gallery")
 				{
 					$this->load->view($page, $gal_data['category_data']);
-          ?>
-          <div class="gal_pagination_top"></div>
-          <?php
 					$this->load->view($img_gal, $gal_data);
-          ?>
-          <!-- <div class="gal_pagination_bottom"></div> -->
-          <?php
 				}
         else if($page == "pages/result")
         {

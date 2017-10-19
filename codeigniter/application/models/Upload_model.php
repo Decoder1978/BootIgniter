@@ -23,7 +23,7 @@ Class Upload_model Extends CI_Model
 
   }
 
-    function insert_images($image_data, $select)
+    function insert_images($image_data, $thumb, $select)
 	{
     $this->db->select('ga.album_id');
     $this->db->select('ga.album_path');
@@ -34,10 +34,12 @@ Class Upload_model Extends CI_Model
 
     $info = $query->result_array();
     $data = array(
-          'alt' => $image_data['raw_name'],
+          'alt'         => $image_data['raw_name'],
           'image_title' => ucfirst(str_replace("_", " ", $image_data['raw_name'])),
-          'full_path' => $info[0]['album_path'].'/'.$image_data['file_name'],
-          'album_id' => $info[0]['album_id']
+          'full_path'   => $info[0]['album_path'].'/'.$image_data['file_name'],
+          'file_name'   => $image_data['file_name'],
+          'thumb'       => $thumb,
+          'album_id'    => $info[0]['album_id']
     );
     $this->db->insert('gallery_image', $data);
 	}

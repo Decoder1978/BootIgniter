@@ -20,13 +20,20 @@
 			<ul class="nav navbar-nav navbar-menu-right">
 				<li>
 					<div class="navbar-right">
-						<form class="search-form" role="search" action="<?php echo base_url();?>result" method="post">
-			        <div class="form-group pull-right" id="search">
-			          <input type="text" name="keyword" class="form-control" placeholder="Search" required>
-			          <button type="submit" class="form-control form-control-submit">Submit</button>
-			          <span class="search-label"><i class="glyphicon glyphicon-search"></i></span>
-			        </div>
-			      </form>
+						<div class="dropdown">
+						  <button class="btn btn-default btn-inverse dropdown-toggle" type="button" data-toggle="dropdown">SEARCH</button>
+						  <ul class="dropdown-menu">
+						    <li>
+									<form class="search-form" role="search" action="<?php echo base_url();?>result" method="post">
+						        <div class="form-group pull-right" id="search">
+						          <input type="text" name="keyword" class="form-control" placeholder="Search" required>
+						          <button type="submit" class="form-control form-control-submit">Submit</button>
+						          <span class="search-label"><i class="glyphicon glyphicon-search"></i></span>
+						        </div>
+						      </form>
+								</li>
+						  </ul>
+						</div>
 					</div>
 				</li>
 				<?php if ($this->session->userdata('login')){ ?>

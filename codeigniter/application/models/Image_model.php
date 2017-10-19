@@ -20,9 +20,8 @@ class Image_model extends CI_Model
 	{
 		$query = $this->db->get('gallery_album');
 		$result = $query->result();
-		$album_info = array('rows' => $result, 'num_rows' => $query->num_rows());
 
-		return $album_info;
+		return $result;
 	}
 
 	// get image
@@ -35,9 +34,8 @@ class Image_model extends CI_Model
 			$this->db->limit(4);
     $query = $this->db->get('gallery_image');
 		$result = $query->result();
-		$img_info = array('rows' => $result, 'num_rows' => $query->num_rows());
 
-		return $img_info;
+		return $result;
 	}
 
 	function get_album_images()

@@ -24,7 +24,6 @@ class Upload extends CI_Controller
 		$data['title'] = ucfirst('upload');
 		$this->load->view('templates/head', $data);
 
-
 		if ( ! $this->upload->do_upload('userfile'))
 		{
       $album_data = $this->session->flashdata('album_data');
@@ -38,11 +37,31 @@ class Upload extends CI_Controller
 		else
 		{
       $details = $this->session->flashdata('details');
-			$this->Upload_model->insert_images($this->upload->data(), $post_data['album_select']);
+			$img_data = $this->upload->data();
+
+
+			$this->load->library('image_lib');
+
+			$config1['image_library'] 	= 'ImageMagick';
+			$config1['source_image'] 		= $img_data["file_name"];
+			$config1['new_image']				= 'assets/thumbs/'."thumb_".$img_data["file_name"];
+			$config1['maintain_ratio'] 	= TRUE;
+			$config1['width']         	= 400;
+			$config1['create_thumb'] = TRUE;
+
+			$this->load->library('image_lib', $config1);
+	    if ( ! $this->image_lib->resize())
+	    {
+					echo "1";
+	        echo $this->image_lib->display_errors();
+	        return;
+	    }
+			
+			$this->Upload_model->insert_images($img_data, "thumb_".$img_data["file_name"], $post_data['album_select']);
 			$js_list = array("upload_modal.js");
       $this->session->set_flashdata('sub_page', 'pages/upload_success');
 			$page_body = array('js_to_load' => $js_list, 'page' => 'pages/profile', 'sub_page' => 'pages/upload_success',
-												'album_data' => $this->upload->data(), 'uname' => $details[0]->name, 'uemail' => $details[0]->email );
+												'album_data' => $img_data, 'uname' => $details[0]->name, 'uemail' => $details[0]->email );
 			$this->load->view('templates/body', $page_body);
 		}
 	}

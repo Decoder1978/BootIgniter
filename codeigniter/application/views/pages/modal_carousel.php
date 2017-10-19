@@ -1,7 +1,7 @@
 <div class="col-md-8">
     <div id="<?php echo 'modal-carousel'.$alb_row->album_id; ?>" class="carousel slide modal-carousel" data-ride="carousel">
         <!-- Indicators -->
-        <ol class="carousel-indicators gal-c-i">
+        <!-- <ol class="carousel-indicators gal-c-i">
             <?php
             $prev_count = NULL;
             $arr_length = count($gal_data['modal_data']);
@@ -22,7 +22,7 @@
               $prev_count = $i;
               }
             } ?>
-        </ol>
+        </ol> -->
 
         <!-- Wrapper for slides -->
         <div class="carousel-background" style="width: 100%; background: black;">
