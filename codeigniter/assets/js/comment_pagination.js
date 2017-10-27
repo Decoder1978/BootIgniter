@@ -14,7 +14,7 @@ $(document).ready(function(){
     $('.com_pagination_top').bootpag({
       total: pages_count,
       page: 1,
-      maxVisible: 4,
+      maxVisible: 3,
       leaps: false,
       firstLastUse: true,
       first: '←',

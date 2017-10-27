@@ -11,16 +11,10 @@
 .gallery-title:after {
     content: "";
     position: absolute;
-    width: 7.5%;
-    left: 46.5%;
+    width: 13.5%;
+    left: 43.5%;
     height: 45px;
-    border-bottom: 1px solid #ddd;
-}
-
-.btn-default:active .filter-button:active
-{
-    background-color: #666666;
-    color: white;
+    border-bottom: 1px solid #DA4;
 }
 .filter-button
 {
@@ -35,69 +29,45 @@
     margin: 5px -2px;
 
 }
-.filter-button:hover,
-.filter-button:focus
+.filter-button:hover, .filter-button:focus
 {
-    font-size: 18px;
+    position: relative;
     border: 1px solid #A84 !important;
-    border-radius: unset;
-    text-align: center;
     color: #DA4 !important;
     background-color: #111 !important;
     outline: 5px auto #DA4;
 }
-
-.filter-button:active,
-.filter-button.active
+.filter-button:active, .filter-button.active
 {
-    font-size: 18px;
     border: 1px solid #111 !important;
-    border-radius: unset;
-    text-align: center;
     color: #111 !important;
     background-color: #A84 !important;
     outline: 5px auto #DA4;
 }
-
-.filter-button:focus,
-.filter-button:active:focus,
-.filter-button.active:focus {
+.filter-button:focus, .filter-button:active:focus, .filter-button.active:focus {
   outline: 5px auto #333333;
 }
-
-.item {
-  background-color: #666666;
-  color: white;
-}
-
-.port-image
-{
-    width: 100%;
-}
-
 .gallery_product
 {
     margin-top: 30px;
     margin-bottom: 30px;
 }
-
-.current {
-  color: green;
-}
-
-#pagin li {
-  display: inline-block;
-}
 /* ----------------- SEARCH STYLES ------------------ */
-
-.search-form .form-group input.form-control::-webkit-input-placeholder{
-  display:none;
+.popuptext {
+  position: absolute;
+  right: 45px;
+  top: 9px;
+  font-size: 14px;
+  color: #f00;
+  z-index: 99;
+  background-color: #fff;
 }
+.search-form .form-group input.form-control::-webkit-input-placeholder,
 .search-form .form-group input.form-control::-moz-placeholder{
   display:none;
 }
 .navbar-right{
-  max-width:250px; /*or I can probably just use columns*/
+  max-width:300px; /*or I can probably just use columns*/
 }
 .navbar-right > .dropdown > button {
   height: 50px;
@@ -113,7 +83,7 @@
   outline-color: #111 !important;
 }
 .navbar-right > .dropdown > .dropdown-menu {
-  min-width: 250px;
+  min-width: 300px;
   height: 60px;
   margin: 0;
   padding: 5px;
@@ -160,8 +130,7 @@ input[type="text"].form-control{
   -webkit-appearence:none;
   -webkit-border-radius:0;
 }
-.form-control-submit,
-.search-label{
+.form-control-submit, .search-label{
   width:40px;
   height:40px;
   position:absolute;
@@ -229,8 +198,27 @@ input[type="text"].form-control{
 /*----------------- CUSTOM STYLES -------------------*/
 
 #mainWrap {
-	padding: 100px 0;
+	padding: 0;
+  min-height: 100%;
+}
+#mainWrap .container {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #181818;
+  min-height: 100%;
+}
+#transition-timer-carousel {
+  padding: 0 30px;
+}
+#transition-timer-carousel > .left {
+  margin-left: 30px;
+}
+#transition-timer-carousel > .right {
+  margin-right: 30px;
+}
 
+blockquote {
+  color: #666;
 }
 .btn-warning {
   color: #111;
@@ -315,41 +303,51 @@ input[type="text"].form-control{
 .thumb_list {
   margin: 0 auto;
   width: 100%;
+  float: left;
 }
 @media (max-width: 488px) {
-  .home_gal .col-xs-6 {
+  .thumb_list > .col-xs-6 {
       width: 95%;
       float: left;
   }
-  .gallery_list .col-xs-6 {
+  .gallery_list > .col-xs-6 {
       width: 95%;
   }
 }
 @media (min-width: 489px) {
-  .home_gal .col-xs-6 {
+  .thumb_list > .col-xs-6 {
       width: 44.5%;
       float: left;
   }
-  .gallery_list .col-xs-6 {
+  .gallery_list > .col-xs-6 {
       width: 44.5%;
+  }
+  .modal_comments {
+    padding: 0 30px;
   }
 }
 @media (min-width: 768px) {
-  .home_gal .col-xs-6 {
+  .thumb_list > .col-xs-6 {
       width: 46.5%;
       float: left;
   }
-  .gallery_list .col-sm-4 {
+  .gallery_list > .col-sm-4 {
       width: 29.7%;
+  }
+  .modal_comments {
+    padding: 0 30px;
   }
 }
 @media (min-width: 992px) {
-  .home_gal .col-md-4 {
-      width: 30.6%;
+  .thumb_list > .col-md-4 {
+      width: 22.3%;
       float: left;
   }
-  .gallery_list .col-md-4 {
+  .gallery_list > .col-md-4 {
       width: 30.5%;
+  }
+  .modal_comments {
+    padding-right: 30px;
   }
 }
 @media (min-width: 768px) and (max-width: 992px) {  /* test and change this */
@@ -379,10 +377,15 @@ input[type="text"].form-control{
   background-color: #111;
 }
 
-.modal_view {
-  width: 100%;
+.thumb h5 {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  background-color: #000;
 }
-.gal_menu button {
+
+.gal_menu > button,
+.gal_menu > a {
   float: left;
   width: 50%;
 }
@@ -397,21 +400,25 @@ input[type="text"].form-control{
 .thumb {
   border: 2px solid #000;
 }
-
 a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
   border: none;
+}
+/* ------------- Modal styles -----------*/
+.modal_view {
+  width: 100%;
 }
 .modal-content {
   background-color: #222;
 }
 .modal-body {
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 35px;
+  padding: 15px 0 10px;
 }
 .modal-body h4 {
   width: 85%;
   float: left;
+}
+.modal-body h5 {
+  border-bottom: 1px solid #A84;
 }
 .modal-body hr {
   border-color: #A84;
@@ -442,6 +449,62 @@ button.close {
   color: #ddd;
   border-bottom: 1px solid #A84;
 }
+.com_list {
+  float: left;
+  width: 100%;
+  margin-bottom: 15px;
+  background-color: #111;
+}
+.comment {
+  float: left;
+  width: 100%;
+}
+.comment hr {
+  clear: both;
+  margin: 0;
+}
+.username {
+  float: left;
+  color: #DA4;
+}
+.com_date {
+  float: right;
+  text-align: right;
+  font-size: 11px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  color: #444;
+}
+.username, .com_date {
+  width: 50%;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 0;
+}
+.com_text {
+  float: left;
+  width: 100%;
+  padding: 0 5px;
+}
+.com_msg {
+  resize: none;
+  width: 100%;
+  height: 100px !important;
+  background-color: #000;
+  color: #ddd;
+  border: 3px solid #111;
+  border-radius: 0;
+}
+.com_msg:focus {
+  box-shadow: none;
+  border-color: #A84;
+}
+.comment_section {
+  width: 100%;
+  position: absolute;
+  bottom: -270px;
+  right: 0;
+}
 
 /* --------- upload styles --------- */
 
@@ -462,31 +525,13 @@ button.close {
   margin-top: 5px;
 }
 
-.image-preview-input {
-  position: relative;
-	overflow: hidden;
-	margin: 0px;
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
+.image-upload-input {
+  padding: 7px 15px;
 }
 
-.image-preview-input input[type=file] {
-	position: absolute;
-	top: 0;
-	right: 0;
-	margin: 0;
-	padding: 0;
-	font-size: 20px;
-	cursor: pointer;
-	opacity: 0;
-	filter: alpha(opacity=0);
+.image_files_upload {
+  float: left;
 }
-
-.image-preview-input-title {
-    margin-left:2px;
-}
-
 /* ----------------- vpn icon ------------------ */
 
 

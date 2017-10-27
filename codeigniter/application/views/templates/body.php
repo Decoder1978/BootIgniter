@@ -15,7 +15,7 @@
 				}
         else if($page == "pages/result")
         {
-          $this->load->view($page, $res_info);
+          $this->load->view($page, $gal_data);
         }
 				else if($page == "pages/profile")
         {

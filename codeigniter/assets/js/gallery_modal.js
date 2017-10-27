@@ -1,7 +1,4 @@
 $(document).ready(function() {
-
-
-
   var modal_id = '';
  $(".modal_view").click(function(){
    modal_id = $(this).attr('data-target').replace(/\#/g, '');
@@ -17,8 +14,6 @@ $(document).ready(function() {
        });
      });
  });
-
-
 
 // Closing modal by button or click out of bounds
  $('.modal ').click(function(){
@@ -46,8 +41,5 @@ $(document).ready(function() {
             $(this).addClass('active');
         });
     });
-
-
-
 
 });

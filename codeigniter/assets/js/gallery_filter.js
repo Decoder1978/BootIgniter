@@ -1,8 +1,9 @@
 $(document).ready(function(){
+  "use strict";
 
   function Pagination(value){
 
-    var num_on_page = 3;  // number of albums on page
+    var num_on_page = 2;  // number of albums on page
     var temp_num = 1;
 
     var count = 0;

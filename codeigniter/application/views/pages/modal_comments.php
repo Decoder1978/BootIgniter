@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="col-md-4 modal_comments">
     <div class="modal-body inline">
         <div class="row">
             <div class="col-md-9">
@@ -17,9 +17,10 @@
                if($gal_data['comment_data'][$i]->album_id == $alb_row->album_id)
                { ?>
                  <div class="<?php echo "comment com_data-".$alb_row->album_id; ?>">
-                   <p class="text-success"><?php echo $gal_data['comment_data'][$i]->name; ?></p>
-                   <p><?php echo $gal_data['comment_data'][$i]->comment_text; ?></p>
-                   <p class="text-mute"><?php echo $gal_data['comment_data'][$i]->date; ?></p>
+                   <p class="username"><?php echo $gal_data['comment_data'][$i]->name; ?></p>
+                   <p class="com_date"><?php echo $gal_data['comment_data'][$i]->date; ?></p>
+                   <p class="com_text"><?php echo $gal_data['comment_data'][$i]->comment_text; ?></p>
+                   <hr>
                  </div>
            <?php	} ?>
         <?php }
@@ -28,8 +29,9 @@
        <div class="com_form">
          <form class="comment_section <?php echo $gal_data['comment_status']; ?>" action="<?= base_url()."gallery";?>" method="post" enctype="multipart/form-data">
            <input type="hidden" class="album" name="album" value="<?php echo $alb_row->album_id; ?>"/>
-           <textarea placeholder="Comment" type="text" style="height:100px" name="comment" class="form-control" maxlength="255" required></textarea>
-           <button class="btn btn-sm btn-warning pull-right comment-btn">Save</button>
+           <textarea placeholder="Comment" type="text" name="comment" class="form-control com_msg" maxlength="255" required></textarea>
+           <span>Share your opinion here</span>
+           <button class="btn btn-sm btn-warning pull-right comment-btn">Submit</button>
          </form>
        </div>
     </div>

@@ -1,4 +1,4 @@
-	<div>
+	<div class="col-md-4">
 		<h3>Contacts</h3>
 		<p>Name: Tester</p>
 		<p>Phone: 8-800-555-35-35</p>

@@ -56,5 +56,22 @@ class Gallery extends CI_Controller
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
 	}
+
+	function download_album()
+	{
+		$album_id = $this->uri->segment(3);
+		$modal_data = $this->Image_model->get_album_images();
+		$album_title = '';
+		foreach ($modal_data as $value) {
+			if($value->album_id == $album_id){
+				$album_title = $value->album_title;
+				$this->zip->read_file($value->full_path);
+			}
+
+		}
+		$this->zip->compression_level = 5;
+		$this->zip->archive('backup/archives/'.$album_title.'.zip');
+		$this->zip->download($album_title.'.zip');
+	}
 }
 ?>

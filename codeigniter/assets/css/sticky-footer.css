@@ -2,12 +2,12 @@
 -------------------------------------------------- */
 html {
   position: relative;
-  min-height: 100%;
+  height: 100%;
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  background-color: #222;
+  min-height: 100%;
+  background-image: url("./img/blackwoodpic.jpg");
 }
 p {
   color: #9d9d9d;
@@ -23,10 +23,9 @@ a:hover, a:focus {
 }
 .footer {
   position: absolute;
-  bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 65px;
   background-color: #111;
 }
 .footer h6 {

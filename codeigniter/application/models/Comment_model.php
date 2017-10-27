@@ -27,7 +27,8 @@ class Comment_model extends CI_Model
       $info = $query->result_array();
 
       $data = [];
-      if($insert_data['comment'] || $insert_data['album'] !== NULL)
+      $comment = trim($insert_data['comment']);
+      if($comment || $insert_data['album'] !== NULL)
       {
 
         $data = array(

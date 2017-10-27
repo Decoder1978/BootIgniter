@@ -13,12 +13,12 @@ foreach($gal_data['category_data']['rows'] as $cat_row)
 					<div class=<?php echo "'gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 thumb filter $cat_row->category_title'"; ?> style="display: none;">
 						<h4><?php echo ucfirst($alb_row->album_title); ?></h4>
 						<a class="thumbnail modal_view" data-image-id="<?php echo $img_row->image_id;?>" data-toggle="modal" data-title="<?php echo $img_row->image_title;?>" data-target="<?php echo '#myModal'.$alb_row->album_id; ?>" >
-							<img src="<?php echo base_url().$img_row->full_path;?>" alt="<?php echo $img_row->alt;?>" class="img-responsive">
+							<img src="<?php echo base_url().$alb_row->album_path.'/thumbs/'.$img_row->thumb; ?>" alt="<?php echo $img_row->alt;?>" class="img-responsive">
 						</a>
 						<div class="gal_menu">
 							<!-- Modal callout -->
 							<button type="button" class="btn btn-default btn-inverse modal_view" data-toggle="modal" data-target="<?php echo '#myModal'.$alb_row->album_id; ?>" >VIEW</button>
-							<button type="button" class="btn btn-default btn-inverse modal_view" data-toggle="modal" data-target="<?php echo '#myModal'.$alb_row->album_id; ?>" >DOWNLOAD</button>
+							<a type="button" class="btn btn-default btn-inverse" href="<?php echo base_url()?>gallery/download_album/<?php echo $alb_row->album_id; ?>">DOWNLOAD</a>
 							<!-- Modal -->
 							<?php
 							$data = array('alb_row' => $alb_row, 'gal_data' => $gal_data);

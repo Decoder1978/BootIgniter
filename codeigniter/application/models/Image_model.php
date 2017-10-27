@@ -40,10 +40,11 @@ class Image_model extends CI_Model
 
 	function get_album_images()
 	{
-		$query = $this->db->get('gallery_image');
+		$this->db->from('gallery_image');
+		$this->db->join('gallery_album', 'gallery_album.album_id = gallery_image.album_id');
+		$query = $this->db->get();
 		$result = $query->result();
 
 		return $result;
 	}
-
 }?>

@@ -12,7 +12,7 @@ class Signup extends CI_Controller
 	function index()
 	{
 		// set form validation rules
-		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]|max_length[30]');
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]|max_length[14]');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|md5');
 
@@ -43,7 +43,7 @@ class Signup extends CI_Controller
 			else
 			{
 				// error
-				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Oops! Error.  Please try again later!!!</div>');
+				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Oops! Error.  Please try again later!</div>');
 				redirect('signup/index');
 			}
 		}
