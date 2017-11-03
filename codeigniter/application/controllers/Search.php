@@ -13,7 +13,7 @@ Class Search Extends CI_Controller
 
 	function search_keyword()
 	{
-		$data['title'] = ucfirst('search result');
+		$data['title'] = ucfirst($this->uri->segment(1));
 		$keyword = $this->input->post('keyword');
 		$search_result = $this->Search_model->search($keyword);
 		/*******************  MODAL SECTION  ****************/

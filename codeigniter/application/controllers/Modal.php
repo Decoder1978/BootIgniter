@@ -22,12 +22,19 @@ class Modal extends CI_Controller
 		{
 			$details = $this->User_model->get_user_by_id($this->session->userdata('uid'));
 			$insert_data = array(
-				'album' => $this->input->post('album'),
-				'name' => $details[0]->name,
-				'comment' => $this->input->post('comment')
+					'album' => $this->input->post('album'),
+					'name' => $details[0]->name,
+					'comment' => $this->input->post('comment')
 			);
-
-			$this->Comment_model->insert_comment($insert_data);
+			/*   ------------------   if spaces in comment (need to change)   -------------------   */
+			if(trim($this->input->post('comment')) !== "")
+			{
+				$this->Comment_model->insert_comment($insert_data);
+			}
+			else
+			{
+				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Oops! Error.  Please try again later!</div>');
+			}
 		}
 /* ??!!?? */
 		else

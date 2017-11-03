@@ -26,13 +26,16 @@ class Home extends CI_Controller
 		$modal_data = $this->Image_model->get_album_images();
 		$comment_data = $this->Comment_model->get_comments();
 		$comment_status = '';
+
+
 		if($this->session->userdata('uid') !== NULL)
 		{
 			$details = $this->User_model->get_user_by_id($this->session->userdata('uid'));
+
 			$insert_data = array(
 				'album' => $this->input->post('album'),
 				'name' => $details[0]->name,
-				'comment' => $this->input->post('comment')
+				'comment' => trim($this->input->post('comment'))
 			);
 			if($this->input->post('comment'))
 			{
@@ -40,18 +43,25 @@ class Home extends CI_Controller
 				$this->Comment_model->insert_comment($insert_data);
 			}
 		}
-		else /* ??!!?? */
+		else
 		{
-			$comment_status = "hidden";
+				$comment_status = "hidden";
 		}
 
-		$js_list = array("home-carousel.js", "gallery_modal.js", "comment_pagination.js", "masonry.pkgd.min.js");
+
+		$js_list = array("home-carousel.js", "gallery_modal.js", "comment_pagination.js");
 		$gal_data = array('album_data' => $album_data, 'img_data' => $img_data,	'modal_data' => $modal_data,
 											'modal_page' => 'pages/modal', 'modal_carousel' => 'pages/modal_carousel', 'modal_comments' => 'pages/modal_comments',
 											'comment_data' => $comment_data,	'comment_status' => $comment_status);
-		$page_body = array('js_to_load' => $js_list, 'page' => 'pages/home', 'home_gal' => 'pages/home_gal', 'gal_data' => $gal_data);
+		$page_body = array(	'js_to_load' => $js_list, 'gal_data' => $gal_data,
+												'page' => 'pages/home', 'home_alb' => 'pages/home_albums', 'home_gal' => 'pages/home_gal');
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
+	}
+
+	function add_comment()
+	{
+
 	}
 
 	function download_album()

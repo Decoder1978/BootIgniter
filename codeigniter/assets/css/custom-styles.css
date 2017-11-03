@@ -1,3 +1,29 @@
+/* ---- grid-item ---- */
+
+.masonry_test {
+  width: 100%;
+}
+
+.grid-sizer,
+.grid-item {
+  width: 20%;
+}
+
+.grid-item {
+  height: 120px;
+  float: left;
+  background: #DA4;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+}
+
+.grid-item--width2 { width:  40%; }
+.grid-item--width3 { width:  60%; }
+
+.grid-item--height2 { height: 240px; }
+.grid-item--height3 { height: 360px; }
+
 /*----------------- Gallery styles -------------------*/
 
 .gallery-title
@@ -61,6 +87,14 @@
   color: #f00;
   z-index: 99;
   background-color: #fff;
+}
+#comment .popuptext {
+  position: absolute;
+  top: 400px;
+  left: 10px;
+  background-color: #000;
+  font-size: 14px;
+  font-weight: bold;
 }
 .search-form .form-group input.form-control::-webkit-input-placeholder,
 .search-form .form-group input.form-control::-moz-placeholder{
@@ -130,7 +164,8 @@ input[type="text"].form-control{
   -webkit-appearence:none;
   -webkit-border-radius:0;
 }
-.form-control-submit, .search-label{
+.form-control-submit, .comment-control-submit,
+.search-label{
   width:40px;
   height:40px;
   position:absolute;
@@ -146,11 +181,20 @@ input[type="text"].form-control{
 }
 .form-control-submit{
   background:#A84; /*stupid IE*/
-    opacity: 0;
+  opacity: 0;
   color: #fff;
   border:none;
   outline:none;
   z-index:-1;
+}
+.comment-control-submit {
+  position: relative;
+  width: auto;
+  height: auto;
+  padding: 5px 10px;
+  line-height: 20px;
+  opacity: 1;
+  z-index: 999;
 }
 .search-label{
   z-index:90;
@@ -455,7 +499,7 @@ button.close {
   margin-bottom: 15px;
   background-color: #111;
 }
-.comment {
+.com_form, .comment, .com_text {
   float: left;
   width: 100%;
 }
@@ -482,8 +526,6 @@ button.close {
   margin-bottom: 0;
 }
 .com_text {
-  float: left;
-  width: 100%;
   padding: 0 5px;
 }
 .com_msg {
@@ -498,12 +540,6 @@ button.close {
 .com_msg:focus {
   box-shadow: none;
   border-color: #A84;
-}
-.comment_section {
-  width: 100%;
-  position: absolute;
-  bottom: -270px;
-  right: 0;
 }
 
 /* --------- upload styles --------- */

@@ -25,21 +25,14 @@ class Comment_model extends CI_Model
       $query = $this->db->get();
 
       $info = $query->result_array();
-
-      $data = [];
-      $comment = trim($insert_data['comment']);
-      if($comment || $insert_data['album'] !== NULL)
-      {
-
-        $data = array(
-              'comment_text' => $insert_data['comment'],
-              'date' => date('Y-m-d H:i:s'),
-              'user_id' => $info[0]['user_id'],
-              'album_id' => $insert_data['album']
-        );
-        $this->db->insert('comments', $data);
-        redirect(base_url());
-      }
+      $data = array(
+            'comment_text' => $insert_data['comment'],
+            'date' => date('Y-m-d H:i:s'),
+            'user_id' => $info[0]['user_id'],
+            'album_id' => $insert_data['album']
+      );
+      $this->db->insert('comments', $data);
+      redirect(base_url());
     }
 }
 

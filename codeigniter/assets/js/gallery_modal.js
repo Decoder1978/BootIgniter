@@ -13,6 +13,33 @@ $(document).ready(function() {
            img.attr('src', img.data('src'));
        });
      });
+
+
+     //Added comment form control
+
+       $('#'+modal_id+' #comment').on("click",(function(e) {
+         e.stopPropagation();
+       }));
+       $("#"+modal_id).on("click", function(e) {
+         if ($(e.target).is('#'+modal_id+' #comment') === false && $('#'+modal_id+' #comment .form-control').val().length == 0) {
+           $('#'+modal_id+' #comment .form-control').css('border', 'none');
+           $('#'+modal_id+' #comment .popuptext').hide('1000');
+         }
+       });
+       $('#'+modal_id+' #comment .comment-control-submit').click(function(e) {
+         var text = $('#'+modal_id+' #comment .form-control').val();
+           if($('#'+modal_id+' #comment .form-control').val().trim().length == 0) {
+             e.preventDefault();
+             $('#'+modal_id+' .comment_section .form-control').css('border', '2px solid red');
+             $('#'+modal_id+' #comment .popuptext').show('1000');
+           }
+           $('#'+modal_id+' #comment .form-control').bind('keydown keyup keypress', function() {
+             $('#'+modal_id+' #comment .form-control').css('border', 'none');
+             $('#'+modal_id+' #comment .popuptext').hide('1000');
+           });
+       })
+
+
  });
 
 // Closing modal by button or click out of bounds

@@ -3,34 +3,33 @@
   <div id="mainWrap">
 		<div class="container">
 			<div class="row">
-			<?php if($page == "pages/home")
-			  {
-					$this->load->view($page);
-					$this->load->view($home_gal, $gal_data);
-				}
-				else if($page == "pages/gallery")
-				{
-					$this->load->view($page, $gal_data['category_data']);
-					$this->load->view($img_gal, $gal_data);
-				}
-        else if($page == "pages/result")
+        <?php
+        switch($page)
         {
-          $this->load->view($page, $gal_data);
+          case 'pages/home':
+            $this->load->view($page);
+            // $this->load->view($home_alb, $gal_data);
+            $this->load->view($home_gal, $gal_data);
+            break;
+          case 'pages/gallery':
+            $this->load->view($page, $gal_data['category_data']);
+  					$this->load->view($img_gal, $gal_data);
+            break;
+          case 'pages/result':
+            $this->load->view($page, $gal_data);
+            break;
+          case 'pages/profile':
+            $this->load->view($page);
+            $this->load->view($sub_page, $album_data);
+            break;
+          default:
+            $this->load->view($page);
         }
-				else if($page == "pages/profile")
-        {
-          $this->load->view($page);
-					$this->load->view($sub_page, $album_data);
-				}
-        else
-        {
-          $this->load->view($page);
-        }?>
+        ?>
 			</div>
 		</div>
 	</div>
 	<?php $this->load->view('templates/footer'); ?>
-
 </body>
 <?php
   $this->load->view('templates/main-scripts');
