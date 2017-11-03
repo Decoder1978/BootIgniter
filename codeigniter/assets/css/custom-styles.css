@@ -136,11 +136,13 @@
     float: right;
   }
 }
-.navbar-right form{
+.navbar-right form {
   margin: 5px 0 !important;
   width:100%;
 }
-
+.profile_form .form-group {
+  width: 100%;
+}
 .form-group{
   position:relative;
   width:0%;
@@ -219,6 +221,9 @@ input[type="text"].form-control{
   }
   li .navbar-right {
     border-top: 2px solid #ccc;
+  }
+  .transition-timer-carousel {
+    display: none;
   }
 }
 .form-group.sb-search-open,
@@ -558,15 +563,26 @@ button.close {
 
 .input-group-btn {
   float: left;
+  width: 100%;
   margin-top: 5px;
+  border-radius: 0;
+}
+.upload_select {
+  border-radius: 0;
 }
 
 .image-upload-input {
+  float: left;
   padding: 7px 15px;
+  border-radius: 0;
 }
 
 .image_files_upload {
   float: left;
+  width: 100%;
+  margin-left: 0 !important;
+  margin-bottom: 10px;
+  border-radius: 0;
 }
 /* ----------------- vpn icon ------------------ */
 
@@ -597,9 +613,9 @@ button.close {
   border-radius: 0;
 }
 .btn-default.btn-inverse:active, .btn-default.btn-inverse.active, .open > .btn-default.btn-inverse.dropdown-toggle {
-  color: #A84;
-  background-color: #111;
-  border-color: #A84;
+  color: #111;
+  background-color: #A84;
+  border-color: #DA4;
   border-radius: 0;
 }
 .btn-default.btn-inverse:active:hover, .btn-default.btn-inverse:active:focus,
@@ -607,9 +623,9 @@ button.close {
 .btn-default.btn-inverse.active:focus, .btn-default.btn-inverse.active.focus,
 .open > .btn-default.btn-inverse.dropdown-toggle:hover, .open > .btn-default.btn-inverse.dropdown-toggle:focus,
 .open > .btn-default.btn-inverse.dropdown-toggle.focus {
-  color: #DA4;
-  background-color: #111;
-  border-color: #A84;
+  color: #111;
+  background-color: #A84;
+  border-color: #DA4;
   border-radius: 0;
 }
 .btn-default.btn-inverse:active, .btn-default.btn-inverse.active, .open > .btn-default.btn-inverse.dropdown-toggle {
@@ -634,9 +650,9 @@ button.close {
   border-radius: 0;
 }
 .btn-default.btn-inverse:hover:active, .btn-default.btn-inverse:hover.active, .open > .btn-default.btn-inverse:hover.dropdown-toggle {
-  color: #DA4;
-  background-color: #111;
-  border-color: #A84;
+  color: #111;
+  background-color: #A84;
+  border-color: #DA4;
   border-radius: 0;
 }
 .btn-default.btn-inverse:hover:active:hover, .btn-default.btn-inverse:hover:active:focus,
@@ -644,9 +660,9 @@ button.close {
 .btn-default.btn-inverse:hover.active:focus, .btn-default.btn-inverse:hover.active.focus,
 .open > .btn-default.btn-inverse:hover.dropdown-toggle:hover, .open > .btn-default.btn-inverse:hover.dropdown-toggle:focus,
 .open > .btn-default.btn-inverse:hover.dropdown-toggle.focus {
-  color: #DA4;
-  background-color: #111;
-  border-color: #A84;
+  color: #111;
+  background-color: #A84;
+  border-color: #DA4;
   border-radius: 0;
 }
 .btn-default.btn-inverse:hover:active, .btn-default.btn-inverse:hover.active, .open > .btn-default.btn-inverse:hover.dropdown-toggle {

@@ -20,11 +20,22 @@ class Profile extends CI_Controller
 		$js_list = array("upload_modal.js");
 		$details = $this->User_model->get_user_by_id($this->session->userdata('uid'));
 		if(!$details) redirect(base_url()); // if enter profile on new browser load
+
+		if($this->input->post('name') != "" && $this->input->post('name') != $details[0]->name)
+		{
+			$new_name = $this->input->post('name');
+			$this->User_model->change_user_info($new_name, $details);
+			$this->session->set_userdata('uname', $new_name);
+			$details[0]->name = $new_name;
+		}
+
 		$cat_data = $this->Upload_model->show_categories();
 		$album_data = $this->Upload_model->show_albums();
+
 		$this->session->set_flashdata('cat_data', $cat_data);
 		$this->session->set_flashdata('album_data', $album_data);
 		$this->session->set_flashdata('details', $details);
+
 		$sub_page = $this->session->flashdata('sub_page');
 		$page_body = array('js_to_load' => $js_list, 'page' => 'pages/profile', 'sub_page' => $sub_page = 'pages/upload', 'cat_data' => $cat_data, 'album_data' => $album_data, 'uname' => $details[0]->name, 'uemail' => $details[0]->email, 'error' => '');
 		$this->load->view('templates/head', $data);

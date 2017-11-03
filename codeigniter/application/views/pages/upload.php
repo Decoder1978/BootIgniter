@@ -4,7 +4,7 @@
 			<form action="<?= site_url('Upload/multi_upload');?>" method="post" enctype="multipart/form-data">
 				<div class="input-group">
 						<select class="form-control upload_select" name="album_select" required>
-							<option value="">Select album</option>
+							<option value="" hidden="hidden">Select album</option>
 							<?php	$prev_cat = '';
 								foreach($cat_data as $cat)
 								{
