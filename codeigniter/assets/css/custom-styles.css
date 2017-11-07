@@ -542,11 +542,20 @@ button.close {
   border: 3px solid #111;
   border-radius: 0;
 }
-.com_msg:focus {
+.com_msg:focus, .com_msg.focused{
   box-shadow: none;
-  border-color: #A84;
+  border: 3px solid #A84;
 }
 
+.com_msg.disabled{
+  box-shadow: none;
+  border: 3px solid #f00;
+}
+
+.com_msg.default{
+  box-shadow: none;
+  border: 3px solid #111;
+}
 /* --------- upload styles --------- */
 
 .popover {

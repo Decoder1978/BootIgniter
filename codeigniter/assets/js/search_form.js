@@ -3,7 +3,7 @@ $(document).ready(function(){
     e.stopPropagation();
   }));
    $(document).on("click", function(e) {
-    if ($(e.target).is("#search") === false && $(".form-control").val().length == 0) {
+    if ($(e.target).is("#search") === false && $(".form-control").val().length < 3) {
       $("#search .form-control").css('border', 'none');
       $(".search-label").css({'background': '#A84', 'color': '#fff'});
       $(".popuptext").hide('1000');
@@ -11,7 +11,7 @@ $(document).ready(function(){
   });
     $(".form-control-submit").click(function(e){
       $(".form-control").each(function(){
-        if($(".form-control").val().trim().length == 0){
+        if($(".form-control").val().trim().length < 3){
           e.preventDefault();
           $(".search-form .form-control").css('border', '2px solid red');
           $(".search-label").css({'background': 'red', 'color': '#fff'});
