@@ -43,9 +43,9 @@ class Modal extends CI_Controller
 		}
 /******************************************************************/
 
-		$gal_data = array('album_data' => $album_data, 'modal_data' => $modal_data,	'comment_data' => $comment_data,	'comment_status' => $comment_status);
+		$gal_data = array('album_data' => $album_data, 'modal_data' => $modal_data,
+											'comment_data' => $comment_data,	'comment_status' => $comment_status);
 		$page_body = array('modal_carousel' => 'pages/modal_carousel', 'modal_comments' => 'pages/modal_comments', 'gal_data' => $gal_data);
-	//	$this->load->view('templates/head', $data);
 		$this->load->view('pages/modal', $page_body);
 	}
 }

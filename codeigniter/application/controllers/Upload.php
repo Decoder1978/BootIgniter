@@ -11,8 +11,12 @@ class Upload extends CI_Controller
 
 	function multi_upload()
 	{
+		if (!file_exists(APPPATH.'views/pages/upload.php'))
+		{
+			// Whoops, we don't have a page for that!
+			show_404();
+		}
 		$this->load->library('upload');
-
 		$post_data = $this->input->post();
 		$album_path = $this->Upload_model->get_album_path($post_data['album_select']);
 

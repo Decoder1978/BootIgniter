@@ -12,7 +12,7 @@ class Home extends CI_Controller
 
 	function index()
 	{
-		if ( ! file_exists(APPPATH.'views/pages/home.php'))
+		if (!file_exists(APPPATH.'views/pages/home.php'))
 		{
 			// Whoops, we don't have a page for that!
 			show_404();
@@ -26,8 +26,7 @@ class Home extends CI_Controller
 		$modal_data = $this->Image_model->get_album_images();
 		$comment_data = $this->Comment_model->get_comments();
 		$comment_status = '';
-
-
+		/*******************  COMMENT SECTION  ****************/
 		if($this->session->userdata('uid') !== NULL)
 		{
 			$details = $this->User_model->get_user_by_id($this->session->userdata('uid'));
@@ -44,10 +43,8 @@ class Home extends CI_Controller
 			}
 		}
 		else
-		{
 				$comment_status = "hidden";
-		}
-
+		/******************************************************/
 
 		$js_list = array("home-carousel.js", "gallery_modal.js", "comment_pagination.js");
 		$gal_data = array('album_data' => $album_data, 'img_data' => $img_data,	'modal_data' => $modal_data,
@@ -57,11 +54,6 @@ class Home extends CI_Controller
 												'page' => 'pages/home', 'home_alb' => 'pages/home_albums', 'home_gal' => 'pages/home_gal');
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
-	}
-
-	function add_comment()
-	{
-
 	}
 
 	function download_album()
@@ -74,7 +66,6 @@ class Home extends CI_Controller
 				$album_title = $value->album_title;
 				$this->zip->read_file($value->full_path);
 			}
-
 		}
 		$this->zip->compression_level = 5;
 		$this->zip->archive('backup/archives/'.$album_title.'.zip');

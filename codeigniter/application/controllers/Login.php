@@ -7,26 +7,32 @@ class Login extends CI_Controller
 		$this->load->library(array('session', 'form_validation'));
 		$this->load->model('user_model');
 	}
-    public function index()
-    {
-		// get form input
-		$email = $this->input->post("email");
-        $password = $this->input->post("password");
+
+  public function index()
+  {
+		if (!file_exists(APPPATH.'views/pages/login.php'))
+		{
+			// Whoops, we don't have a page for that!
+			show_404();
+		}
 
 		// form validation
 		$this->form_validation->set_rules("email", "Email", "trim|required");
 		$this->form_validation->set_rules("password", "Password", "trim|required");
 
 		if ($this->form_validation->run() == FALSE)
-        {
+    {
 			// validation fail
-			$data['title'] = ucfirst('login');
+			$data['title'] = ucfirst($this->uri->segment(1));
 			$page_body = array('page' => 'pages/login');
 			$this->load->view('templates/head', $data);
 			$this->load->view('templates/body', $page_body);
 		}
 		else
 		{
+			// get form input
+			$email = $this->input->post("email");
+			$password = $this->input->post("password");
 			// check for user credentials
 			$uresult = $this->user_model->get_user($email, $password);
 			if (count($uresult) > 0)
@@ -42,5 +48,5 @@ class Login extends CI_Controller
 				redirect('login/index');
 			}
 		}
-    }
+  }
 }

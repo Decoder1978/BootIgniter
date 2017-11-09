@@ -13,6 +13,11 @@ Class Search Extends CI_Controller
 
 	function search_keyword()
 	{
+		if (!file_exists(APPPATH.'views/pages/result.php'))
+		{
+			// Whoops, we don't have a page for that!
+			show_404();
+		}
 		$data['title'] = ucfirst($this->uri->segment(1));
 		$keyword = $this->input->post('keyword');
 		$search_result = $this->Search_model->search($keyword);

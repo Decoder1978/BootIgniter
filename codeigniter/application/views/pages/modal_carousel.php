@@ -37,7 +37,7 @@
                       if ($prev_num == NULL)
                       { ?>
                       <div class="item active" data-slide-number="<?php echo $j-1; ?>">
-                          <img class="lazy_load" src="<?php echo base_url().$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
+                          <img class="lazy_load<?= $alb_row->album_id ?>" src="" data-src="<?php echo base_url().$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
                           <h4><?php echo $gal_data['modal_data'][$j-1]->image_title; ?></h4>
                       </div>
                 <?php
@@ -45,7 +45,7 @@
                   else
                       { ?>
                       <div class="item" data-slide-number="<?php echo $j-1; ?>">
-                          <img class="lazy_load" src="<?php echo base_url().$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
+                          <img class="lazy_load<?= $alb_row->album_id ?>" src="" data-src="<?php echo base_url().$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
                           <h4><?php echo $gal_data['modal_data'][$j-1]->image_title; ?></h4>
                       </div>
                 <?php

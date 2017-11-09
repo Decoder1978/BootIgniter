@@ -1,12 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 class User_model extends CI_Model
 {
 	function __construct()
-    {
-        parent::__construct();
-				$this->load->helper('date');
-    }
+  {
+      parent::__construct();
+			$this->load->helper('date');
+  }
 
 	function get_user($email, $pwd)
 	{
@@ -34,7 +33,6 @@ class User_model extends CI_Model
 				'name' => $new_name,
 				'date_updated' => date('Y-m-d H:i:s')
 		);
-
 		$this->db->where('email', $details[0]->email);
 		return $this->db->update('users', $data);
 	}

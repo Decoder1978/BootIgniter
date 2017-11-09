@@ -1,18 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 class Image_model extends CI_Model
 {
 	function __construct()
-    {
-        parent::__construct();
-    }
+  {
+      parent::__construct();
+  }
 
 	function get_category_info()
 	{
 		$query = $this->db->get('gallery_category');
 		$result = $query->result();
 		$category_info = array('rows' => $result, 'num_rows' => $query->num_rows());
-
 		return $category_info;
 	}
 
@@ -20,12 +18,10 @@ class Image_model extends CI_Model
 	{
 		$query = $this->db->get('gallery_album');
 		$result = $query->result();
-
 		return $result;
 	}
 
 	// get image
-
 	function get_image($page)
 	{
 		$this->db->distinct();
@@ -34,7 +30,6 @@ class Image_model extends CI_Model
 			$this->db->limit(4);
     $query = $this->db->get('gallery_image');
 		$result = $query->result();
-
 		return $result;
 	}
 
@@ -44,7 +39,6 @@ class Image_model extends CI_Model
 		$this->db->join('gallery_album', 'gallery_album.album_id = gallery_image.album_id');
 		$query = $this->db->get();
 		$result = $query->result();
-
 		return $result;
 	}
 }?>

@@ -11,20 +11,24 @@ class Signup extends CI_Controller
 
 	function index()
 	{
+		if (!file_exists(APPPATH.'views/pages/signup.php'))
+		{
+			// Whoops, we don't have a page for that!
+			show_404();
+		}
 		// set form validation rules
 		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]|max_length[14]');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|md5');
-
 		// submit
-		if ($this->form_validation->run() == FALSE)
-        {
+		if($this->form_validation->run() == FALSE)
+    {
 			// fails
 			$data['title'] = ucfirst('signup');
 			$page_body = array('page' => 'pages/signup');
 			$this->load->view('templates/head', $data);
 			$this->load->view('templates/body', $page_body);
-        }
+		}
 		else
 		{
 			//insert user details into db
