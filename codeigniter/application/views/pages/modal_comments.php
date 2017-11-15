@@ -22,7 +22,7 @@
                    <p class="com_text"><?= $gal_data['comment_data'][$i]->comment_text; ?></p>
                    <hr>
                  </div>
-           <?php	} ?>
+          <?php	} ?>
         <?php }
          ?>
        </div>
@@ -31,9 +31,9 @@
          <form class="comment_section <?= $gal_data['comment_status']; ?>" action="<?= base_url(); ?>home"; method="post" enctype="multipart/form-data">
            <div id="comment">
              <input type="hidden" class="album" name="album" value="<?= $alb_row->album_id; ?>"/>
-             <textarea type="text" name="comment" class="form-control com_msg" maxlength="255" required></textarea>
+             <textarea type="text" name="comment" class="form-control" maxlength="255" required></textarea>
              <span>Share your opinion here</span>
-             <button class="btn btn-sm btn-warning pull-right comment-btn comment-control-submit">Submit</button>
+             <button class="btn btn-sm btn-warning pull-right comment-btn form-submit comment-control-submit">Submit</button>
              <span class="popuptext" style="display: none;">Less then 3 symbols!</span>
            </div>
           </form>

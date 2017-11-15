@@ -2,7 +2,7 @@
 	<h4>Upload image:</h4>
 		<!-- image-preview-filename input [CUT FROM HERE]-->
 			<form action="<?= site_url('Upload/multi_upload');?>" method="post" enctype="multipart/form-data">
-				<div class="input-group">
+				<div class="input-group" id="upload">
 						<select class="form-control upload_select" name="album_select" required>
 							<option value="" hidden="hidden">Select album</option>
 							<?php	$prev_cat = '';
@@ -11,12 +11,12 @@
 									if($cat->category_title == $prev_cat)
 									{	continue;	}
 									else { ?>
-										<option class="upload_select_cat" disabled>──────<?php echo ucfirst($cat->category_title);?>──────</option><?php
+										<option class="upload_select_cat" disabled>──────<?= ucfirst($cat->category_title);?>──────</option><?php
 										foreach ($album_data as $alb)
 										{
 											if($alb->category_id == $cat->category_id)
 											{ ?>
-												<option value="<?php echo $alb->album_title;?>"><?php echo ucfirst($alb->album_title);?></option><?php
+												<option value="<?php echo $alb->album_title;?>"><?= ucfirst($alb->album_title);?></option><?php
 											}
 										}
 										$prev_cat = $cat->category_title;
@@ -26,10 +26,10 @@
 						<span class="input-group-btn">
 						<!-- image-preview-input -->
 							<input class="btn btn-default image_files_upload" type="file" accept="image/png, image/jpeg, image/gif" name="usr_files[]" multiple="multiple"/>
-							<input class="btn btn-default image-upload-input" type="submit" value="Upload"/>
+							<button class="btn btn-warning image-upload-input" type="submit" value="Upload">Upload</button>
 						</span>
 
 				</div><!-- /input-group image-preview [TO HERE]-->
-				<?php echo $error;?>
+				<?= $error;?>
 			</form>
 </div>
