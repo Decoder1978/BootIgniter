@@ -1,2 +1,2 @@
 # BootIgniter
-Testing template for MVC gallery
+CodeIgniter+Bootstrap+JQuery gallery with dynamic filter, pagination and modal picture albums.
