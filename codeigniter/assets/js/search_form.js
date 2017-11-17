@@ -1,8 +1,7 @@
 $(document).ready(function() {
-
-$('#search').on("click",(function(e){
-  formValidationStyles('#search');
-}))
+  $('#search').on("click",(function(e){
+    formValidationStyles('#search');
+  }))
 
 // collapsed navbar closing fix
   $(document).click(function(e) {

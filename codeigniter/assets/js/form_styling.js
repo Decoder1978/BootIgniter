@@ -4,7 +4,7 @@ function formStyling(form, view, form_style) {
   let srch_label = $(form + ' .search-label');
   let popuptext = $(form + ' .popuptext');
 
-  form_input.attr('class', "");
+  form_input.attr('class', "form-control ");
   form_input.addClass('form-control ' + form_style);
   srch_label.attr('class', "search-label ");
   srch_label.addClass('search-label ' + form_style);

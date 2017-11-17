@@ -37,20 +37,23 @@ Class Upload_model Extends CI_Model
     $this->db->like('ga.album_title',  $post['album_select']);
     $this->db->from('gallery_album ga');
     $query = $this->db->get();
-    $info = $query->result_array();
+    $info = $query->result();
 
+    $alb_path_tags = str_replace("/", ",", $info[0]->album_path);
+    $alb_name_len = strlen($post['album_select']);
     for($i = 0; $i < count($image_data); $i++)
     {
-      $tags = substr(str_replace("/", ",", $info[0]['album_path']), 8).str_replace("_", ",", $image_data[$i]['raw_name'], strlen($post['album_select']));
+      $pic_name_tags = str_replace("_", ",", $image_data[$i]['raw_name'], $alb_name_len);
+      $tags = substr($alb_path_tags, 8).",".$pic_name_tags;
 
       $data = array(
             'alt'         => $image_data[$i]['raw_name'],
             'image_title' => ucfirst(str_replace("_", " ", $image_data[$i]['raw_name'])),
-            'full_path'   => $info[0]['album_path'].'/'.$image_data[$i]['file_name'],
+            'full_path'   => $info[0]->album_path.'/'.$image_data[$i]['file_name'],
             'file_name'   => $image_data[$i]['file_name'],
             'thumb'       => $thumb,
             'pic_tags'    => $tags,
-            'album_id'    => $info[0]['album_id']
+            'album_id'    => $info[0]->album_id
       );
     }
     $this->db->insert('gallery_image', $data);

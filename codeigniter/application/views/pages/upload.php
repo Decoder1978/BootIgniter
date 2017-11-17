@@ -1,7 +1,7 @@
 <div class="col-md-4">
 	<h4>Upload image:</h4>
 		<!-- image-preview-filename input [CUT FROM HERE]-->
-			<form action="<?= site_url('Upload/multi_upload');?>" method="post" enctype="multipart/form-data">
+			<form action="<?= base_url()."upload";?>" method="post" enctype="multipart/form-data">
 				<div class="input-group" id="upload">
 						<select class="form-control upload_select" name="album_select" required>
 							<option value="" hidden="hidden">Select album</option>
@@ -30,6 +30,6 @@
 						</span>
 
 				</div><!-- /input-group image-preview [TO HERE]-->
-				<?= $error;?>
+				<?= $this->session->flashdata('error');?>
 			</form>
 </div>

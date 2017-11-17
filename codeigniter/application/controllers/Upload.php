@@ -49,9 +49,12 @@ class Upload extends CI_Controller
 
 			if ( ! $this->upload->do_upload()) {
 				$this->session->set_flashdata('sub_page', 'pages/upload');
+				$this->session->set_flashdata('error', $this->upload->display_errors());
 				$js_list = array("upload_modal.js");
 				$page_body = array('js_to_load' => $js_list, 'page' => 'pages/profile', 'sub_page' => 'pages/upload',
-				'album_data' => $album_data, 'uname' => $details[0]->name, 'uemail' => $details[0]->email, 'error' => $this->upload->display_errors());
+				'cat_data' => $cat_data, 'album_data' => $album_data,
+				'uname' => $details[0]->name, 'uemail' => $details[0]->email);
+				redirect(base_url()."profile");
 			}
 			else {
 				$this->load->library('image_lib');
