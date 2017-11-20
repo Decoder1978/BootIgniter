@@ -25,10 +25,15 @@ class Image_model extends CI_Model
 	function get_image($page)
 	{
 		$this->db->distinct();
-		$this->db->group_by('album_id');
-		if($page == 'home' || $page == '')
-			$this->db->limit(4);
-    $query = $this->db->get('gallery_image');
+		$this->db->from('gallery_image');
+		if($page == 'home' || $page == ''){
+			$this->db->limit(8);
+			$this->db->join('gallery_album', 'gallery_album.album_id = gallery_image.album_id');
+			$this->db->group_by('album_title');
+		}
+		else
+			$this->db->group_by('album_id');
+    $query = $this->db->get();
 		$result = $query->result();
 		return $result;
 	}
@@ -37,6 +42,17 @@ class Image_model extends CI_Model
 	{
 		$this->db->from('gallery_image');
 		$this->db->join('gallery_album', 'gallery_album.album_id = gallery_image.album_id');
+		$query = $this->db->get();
+		$result = $query->result();
+		return $result;
+	}
+
+	function recent_upload_images()
+	{
+		$this->db->from('gallery_image');
+		$this->db->join('gallery_album', 'gallery_album.album_id = gallery_image.album_id');
+		$this->db->limit(4);
+		$this->db->order_by("created_at", "desc");
 		$query = $this->db->get();
 		$result = $query->result();
 		return $result;

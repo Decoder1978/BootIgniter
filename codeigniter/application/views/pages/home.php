@@ -1,9 +1,5 @@
-<script>
-var message = "<?php echo $this->session->flashdata('msg'); ?>";
-	if(message !== ""){
-		alert(message);
-	}
-</script>
+
+<h1 id="site_logo">BootIgniter Gallery</h1>
 
 <!-- The carousel -->
 <div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel">
@@ -17,7 +13,7 @@ var message = "<?php echo $this->session->flashdata('msg'); ?>";
 	<!-- Wrapper for slides -->
 	<div class="carousel-inner">
 		<div class="item active">
-			<img src="<?php echo base_url();?>uploads/carousel_photo/fall_grass_leaves_91527.jpg" />
+			<img src="<?= base_url();?>uploads/carousel_photo/fall_grass_leaves_91527.jpg" />
 			<div class="carousel-caption">
 				<h1 class="carousel-caption-header">Find picture of your dreams</h1>
 				<p class="carousel-caption-text hidden-sm hidden-xs">
@@ -27,7 +23,7 @@ var message = "<?php echo $this->session->flashdata('msg'); ?>";
 		</div>
 
 		<div class="item">
-			<img src="<?php echo base_url();?>uploads/carousel_photo/milky_way_stars_night_sky_space_97654.jpg" />
+			<img src="<?= base_url();?>uploads/carousel_photo/milky_way_stars_night_sky_space_97654.jpg" />
 			<div class="carousel-caption">
 				<h1 class="carousel-caption-header">Share your thoughts</h1>
 				<p class="carousel-caption-text hidden-sm hidden-xs">
@@ -37,7 +33,7 @@ var message = "<?php echo $this->session->flashdata('msg'); ?>";
 		</div>
 
 		<div class="item">
-			<img src="<?php echo base_url();?>uploads/carousel_photo/surface_texture_stains_background_50906.jpg" />
+			<img src="<?= base_url();?>uploads/carousel_photo/surface_texture_stains_background_50906.jpg" />
 			<div class="carousel-caption">
 				<h1 class="carousel-caption-header">Add your own images</h1>
 				<p class="carousel-caption-text hidden-sm hidden-xs">

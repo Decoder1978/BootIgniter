@@ -20,23 +20,16 @@
 			<ul class="nav navbar-nav navbar-menu-right">
 				<li>
 					<div class="navbar-right">
-						<div class="dropdown">
-						  <button class="btn btn-default btn-inverse dropdown-toggle" type="button" data-toggle="dropdown">SEARCH</button>
-						  <ul class="dropdown-menu">
-						    <li>
-									<form class="search-form" role="search" action="<?= base_url();?>result" method="post">
-										<div id="search">
-											<div class="form-group pull-right sb-search-open">
-											 <input type="text" name="keyword" class="form-control" placeholder="Search" required>
-											 <button type="submit" class="form-submit form-control-submit">Submit</button>
-											 <span class="search-label"><i class="glyphicon glyphicon-search"></i></span>
-											 <span class="popuptext" style="display: none;">Less then 3 symbols!</span>
-										 </div>
-										</div>
-						      </form>
-								</li>
-						  </ul>
-						</div>
+						<form class="search-form" role="search" action="<?= base_url();?>result" method="post">
+							<div id="search">
+								<div class="form-group pull-right">
+								 <input type="text" name="keyword" class="form-control" placeholder="Search" required>
+								 <button type="submit" class="form-submit form-control-submit">Submit</button>
+								 <span class="search-label"><i class="glyphicon glyphicon-search"></i></span>
+								 <span class="popuptext" style="display: none;">Less then 3 symbols!</span>
+							 </div>
+							</div>
+			      </form>
 					</div>
 				</li>
 				<?php if ($this->session->userdata('login')){ ?>

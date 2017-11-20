@@ -30,7 +30,6 @@ function formValidationStyles(form_id) {
         e.stopPropagation();
         if(form_status != 'focused')
           form_status = formStyling(form_id, 'hide', 'focused');
-    //    console.log("2"+form_status); //repeated bug
       });
   })
 }

@@ -22,6 +22,7 @@ class Home extends CI_Controller
 		/*******************  MAIN SECTION  ******************/
 		$img_data = $this->Image_model->get_image($this->uri->segment(1));
 		$album_data = $this->Image_model->get_album_info();
+		$recent_data = $this->Image_model->recent_upload_images();
 		/*******************  MODAL SECTION  ****************/
 		$modal_data = $this->Image_model->get_album_images();
 		$comment_data = $this->Comment_model->get_comments();
@@ -47,7 +48,7 @@ class Home extends CI_Controller
 		/******************************************************/
 
 		$js_list = array("home-carousel.js", "gallery_modal.js", "comment_pagination.js");
-		$gal_data = array('album_data' => $album_data, 'img_data' => $img_data,	'modal_data' => $modal_data,
+		$gal_data = array('album_data' => $album_data, 'img_data' => $img_data,	'modal_data' => $modal_data, 'recent_data' => $recent_data,
 											'modal_page' => 'pages/modal', 'modal_carousel' => 'pages/modal_carousel', 'modal_comments' => 'pages/modal_comments',
 											'comment_data' => $comment_data,	'comment_status' => $comment_status);
 		$page_body = array(	'js_to_load' => $js_list, 'gal_data' => $gal_data,
