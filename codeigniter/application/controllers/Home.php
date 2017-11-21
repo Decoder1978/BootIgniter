@@ -47,7 +47,7 @@ class Home extends CI_Controller
 				$comment_status = "hidden";
 		/******************************************************/
 
-		$js_list = array("home-carousel.js", "gallery_modal.js", "comment_pagination.js");
+		$js_list = array("home-carousel.js", "gallery_modal.js", "comment_pagination.js", "home_msnry.js");
 		$gal_data = array('album_data' => $album_data, 'img_data' => $img_data,	'modal_data' => $modal_data, 'recent_data' => $recent_data,
 											'modal_page' => 'pages/modal', 'modal_carousel' => 'pages/modal_carousel', 'modal_comments' => 'pages/modal_comments',
 											'comment_data' => $comment_data,	'comment_status' => $comment_status);

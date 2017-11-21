@@ -54,4 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['result'] = 'search/search_keyword';
-$route['upload'] = 'index.php/Upload/multi_upload';
+$route['upload'] = 'upload/multi_upload';
