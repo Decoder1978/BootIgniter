@@ -32,4 +32,7 @@ $(document).ready(function() {
     $(modal_id).removeClass('show').addClass('hide');
     $(modal_id).modal('hide');
   })
+
+
+
 });

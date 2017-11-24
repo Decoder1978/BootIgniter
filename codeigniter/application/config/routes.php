@@ -53,5 +53,18 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['result'] = 'search/search_keyword';
-$route['upload'] = 'upload/multi_upload';
+/* ------------------------------------------------------------ */
+
+$route['home']    = 'home/index';
+$route['gallery'] = 'gallery/index';
+$route['about']   = 'about/index';
+$route['contact'] = 'contact/index';
+$route['profile'] = 'profile/index';
+$route['login']   = 'login/index';
+$route['signup']  = 'signup/index';
+$route['result']  = 'search/search_keyword';
+$route['upload']  = 'upload/multi_upload';
+
+$route['result/(:any)']   = 'search/search_keyword/$1';
+$route['album/(:any)']    = 'album/index/$1';
+$route['download/(:num)'] = 'gallery/download_album/$1';

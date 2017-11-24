@@ -64,6 +64,45 @@ color: #444;
   background-color: #181818;
   min-height: 100%;
 }
+
+/*----------------- album -----------------*/
+
+#main_area {
+  padding: 0 15px;
+}
+
+.hide-bullets {
+list-style:none;
+margin-left: -40px;
+margin-top:20px;
+}
+#albtag_info, #pictag_info {
+  width: 30%;
+  float: left;
+  margin: 0;
+  padding: 5px 0;
+}
+#albtag_links, #pictag_links {
+  width: 70%;
+  float: right;
+  padding: 5px 0;
+}
+
+#album_title {
+  font-weight: bold;
+  border-bottom: 2px solid #DA4;
+}
+
+.album_tags, .album_info .btn {
+  float: left;
+}
+#album_rating {
+  clear: both;
+}
+
+.album_tags, .pic_tags {
+  padding: 0 3px;
+}
 /*------------------- navbar ----------------------*/
 @media (max-width: 768px){
 .navbar-brand {
@@ -109,15 +148,16 @@ color: #444;
   background: #111;
   border: 2px solid #333;
   border-color: rgba(0, 0, 0, 0.5);
+}
+.grid-item img {
+  transform: scale(1);
   transition: all .5s ease-in-out;
 }
-@media (min-width: 768px){
-  .grid-item img:hover {
+
+.grid-item img.animate {
     transform: scale(1.4);
     filter: blur(2px);
   }
-}
-
 
 /* 2 columns */
 .grid-item--width2 { width: 280px; }
@@ -329,15 +369,35 @@ color: #444;
 }
 
 #comment .popuptext {
-  position: absolute;
   width: 70%;
   top: 437px;
   left: 0;
   background-color: #222;
-  font-size: 14px;
+}
+
+.post-comments, .com_list {
+  padding: 0 15px;
+}
+
+.post-comments #comment .popuptext {
+  width: auto;
+  top: 210px;
+  left: 90px;
+  background-color: #181818;
+}
+
+.media-heading p {
+  font-size: 16px;
   font-weight: bold;
 }
 
+.media-body .com_text {
+  margin-top: 10px;
+}
+
+.media hr {
+  border-color: #666;
+}
 
 .navbar-right, .navbar-right form{
   /*max-width:300px; /*or I can probably just use columns*/
@@ -609,7 +669,7 @@ color: #444;
       width: 31%;
   }
 }
-.thumb h4,
+.thumb h4, #main_area h4,
 .gallery_product h4 {
   margin: 0;
   padding: 10px;
@@ -637,6 +697,10 @@ color: #444;
   border: none;
   border-radius: 0;
   cursor: pointer;
+}
+
+.hide-bullets .pic_thumb.active {
+  border: 2px solid #DA4;
 }
 
 .thumb {
@@ -683,9 +747,6 @@ button.close {
   right: 30px;
   top: 23px;
   float: right;
-}
-.gal-c-i {
-  bottom: -11px;
 }
 .page-header {
   padding: 15px;

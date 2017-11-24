@@ -19,10 +19,15 @@ Class Search Extends CI_Controller
 			show_404();
 		}
 		$data['title'] = ucfirst($this->uri->segment(1));
-		$keyword = $this->input->post('keyword');
+
+		if($this->input->post('keyword'))
+			$keyword = $this->input->post('keyword');
+		else
+			$keyword = $this->uri->segment(2);
+
 		$search_result = $this->Search_model->search($keyword);
 		/*******************  MODAL SECTION  ****************/
-		$modal_data = $this->Image_model->get_album_images();
+		$modal_data = $this->Image_model->get_thumbs();
 		$comment_data = $this->Comment_model->get_comments();
 		$comment_status = '';
 		if($this->session->userdata('uid') !== NULL)
@@ -51,23 +56,6 @@ Class Search Extends CI_Controller
 		$page_body = array('js_to_load' => $js_list, 'page' => 'pages/result', 'gal_data' => $gal_data);
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
-	}
-
-	function download_album()
-	{
-		$album_id = $this->uri->segment(3);
-		$modal_data = $this->Image_model->get_album_images();
-		$album_title = '';
-		foreach ($modal_data as $value) {
-			if($value->album_id == $album_id){
-				$album_title = $value->album_title;
-				$this->zip->read_file($value->full_path);
-			}
-
-		}
-		$this->zip->compression_level = 5;
-		$this->zip->archive('backup/archives/'.$album_title.'.zip');
-		$this->zip->download($album_title.'.zip');
 	}
 }
 ?>

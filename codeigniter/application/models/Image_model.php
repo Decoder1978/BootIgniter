@@ -38,7 +38,26 @@ class Image_model extends CI_Model
 		return $result;
 	}
 
-	function get_album_images()
+	function get_album_id($album_title)
+	{
+		$this->db->select('album_id');
+		$this->db->where('gallery_album.album_title', $album_title);
+		$query = $this->db->get('gallery_album');
+		$result = $query->result();
+		return $result;
+	}
+
+	function get_album_images($album_id)
+	{
+		$this->db->from('gallery_image');
+		$this->db->where('gallery_image.album_id = '.$album_id);
+		$this->db->join('gallery_album', 'gallery_album.album_id = '.$album_id);
+		$query = $this->db->get();
+		$result = $query->result();
+		return $result;
+	}
+
+	function get_thumbs()
 	{
 		$this->db->from('gallery_image');
 		$this->db->join('gallery_album', 'gallery_album.album_id = gallery_image.album_id');

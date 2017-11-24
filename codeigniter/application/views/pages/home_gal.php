@@ -4,7 +4,7 @@
 		<div class="grid-sizer"></div>
 		<?php	foreach($gal_data['img_data'] as $row)
 		{ ?>
-			<a href="#"><div class="grid-item grid-item--width2" id="alb_num<?= $row->album_id; ?>">
+			<a href="<?= base_url(); ?>album/<?= $row->album_title; ?>"><div class="grid-item grid-item--width2" id="alb_num<?= $row->album_id; ?>">
 		  	<img src="<?= base_url().$row->album_path.'/thumbs/'.$row->thumb; ?>" alt="<?= $row->alt; ?>" class="img-responsive">
 				<span class="mas_title"><?= $row->album_title; ?></span>
 		  </div></a>
@@ -22,8 +22,8 @@
 										<h4><?= $row->image_title; ?></h4>
 									</div>
 									<div class="thumb_image">
-										<a class="thumbnail" data-image-id="<?= $row->image_id; ?>" data-title="<?= $row->image_title; ?>" >
-											<img src="<?= base_url().$row->album_path.'/thumbs/'.$row->thumb; ?>" alt="<?= $row->alt; ?>" class="img-responsive">
+										<a class="thumbnail" href="album/<?= $row->album_title; ?>" data-image-id="<?= $row->image_id; ?>" data-title="<?= $row->image_title; ?>" >
+											<img src="<?= $row->album_path.'/thumbs/'.$row->thumb; ?>" alt="<?= $row->alt; ?>" class="img-responsive">
 										</a>
 									</div>
 								</div>

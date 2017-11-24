@@ -26,8 +26,7 @@ function formValidationStyles(form_id) {
         if(form_status != 'disabled')
           form_status = formStyling(form_id, 'show', 'disabled');
       }
-      $(form_id + ' .form-control').on('click', function(e) {
-        e.stopPropagation();
+      $(form_id + ' .form-control, #mainWrap').on('click', function(e) {
         if(form_status != 'focused')
           form_status = formStyling(form_id, 'hide', 'focused');
       });

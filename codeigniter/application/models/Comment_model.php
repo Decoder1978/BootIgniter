@@ -16,6 +16,16 @@ class Comment_model extends CI_Model
       return $result;
     }
 
+    function get_comments_by_id($album_id)
+    {
+      $this->db->from('comments');
+      $this->db->where('album_id', $album_id);
+      $this->db->join('users', 'comments.user_id = users.user_id', 'right');
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
     function insert_comment($insert_data)
     {
       $this->db->select('u.user_id');
@@ -31,7 +41,6 @@ class Comment_model extends CI_Model
             'album_id' => $insert_data['album']
       );
       $this->db->insert('comments', $data);
-      redirect(base_url());
     }
 }
 

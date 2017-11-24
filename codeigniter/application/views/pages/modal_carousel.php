@@ -1,32 +1,7 @@
-<div class="col-md-8 modal_carousel">
-    <div id="<?php echo 'modal-carousel'.$alb_row->album_id; ?>" class="carousel slide modal-carousel" data-ride="carousel">
-        <!-- Indicators -->
-        <!-- <ol class="carousel-indicators gal-c-i">
-            <?php
-            $prev_count = NULL;
-            $arr_length = count($gal_data['modal_data']);
-            for($i = 1; $i <= $arr_length; $i++)
-            {
-              if ($gal_data['modal_data'][$i-1]->album_id == $alb_row->album_id)
-              {
-
-                  if ($prev_count == NULL)
-                  {  ?>
-                    <li data-target="<?php echo '#modal-carousel'.$alb_row->album_id; ?>" data-slide-to="<?php echo $i-1; ?>" class="active"></li>
-                    <?php
-                  }
-              else { ?>
-                    <li data-target="<?php echo '#modal-carousel'.$alb_row->album_id; ?>" data-slide-to="<?php echo $i-1; ?>" ></li>
-                    <?php
-                  }
-              $prev_count = $i;
-              }
-            } ?>
-        </ol> -->
-
+<div class="col-md-8 md_c">
+    <div id="modal-carousel<?= $alb_row->album_id; ?>" class="carousel slide" data-ride="carousel">
         <!-- Wrapper for slides -->
-        <div class="carousel-background" style="width: 100%; background: black;">
-          <div class="carousel-inner">
+          <div class="carousel-inner" role="listbox">
               <?php
                 $prev_num = NULL;
                 $arr_length = count($gal_data['modal_data']);
@@ -36,30 +11,50 @@
                   {
                       if ($prev_num == NULL)
                       { ?>
-                      <div class="item active" data-slide-number="<?php echo $j-1; ?>">
-                          <img class="lazy_load<?= $alb_row->album_id ?>" src="" data-src="<?php echo base_url().$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
-                          <h4><?php echo $gal_data['modal_data'][$j-1]->image_title; ?></h4>
+                      <div class="item active" data-slide-number="<?= $j-1; ?>">
+                          <img class="lazy_load<?= $alb_row->album_id ?>" src="" data-src="<?= base_url().$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
+                          <h4><?= $gal_data['modal_data'][$j-1]->image_title; ?></h4>
                       </div>
-                <?php
-                      }
+                <?php }
                   else
                       { ?>
-                      <div class="item" data-slide-number="<?php echo $j-1; ?>">
-                          <img class="lazy_load<?= $alb_row->album_id ?>" src="" data-src="<?php echo base_url().$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
-                          <h4><?php echo $gal_data['modal_data'][$j-1]->image_title; ?></h4>
+                      <div class="item" data-slide-number="<?= $j-1; ?>">
+                          <img class="lazy_load<?= $alb_row->album_id ?>" src="" data-src="<?= base_url().$gal_data['modal_data'][$j-1]->full_path; ?>" alt="<?php echo $gal_data['modal_data'][$j-1]->alt; ?>" >
+                          <h4><?= $gal_data['modal_data'][$j-1]->image_title; ?></h4>
                       </div>
-                <?php
-              	       }
+                <?php }
               $prev_num = $j;
                   }
                 } ?>
-                <a class="left carousel-control" data-slide="prev" onclick="$('<?php echo "#modal-carousel".$alb_row->album_id; ?>').carousel('prev')">
+                <a class="left carousel-control" data-slide="prev" onclick="$('<?= "#modal-carousel".$alb_row->album_id; ?>').carousel('prev')">
                   <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
-                <a class="right carousel-control" data-slide="next" onclick="$('<?php echo "#modal-carousel".$alb_row->album_id; ?>').carousel('next')">
+                <a class="right carousel-control" data-slide="next" onclick="$('<?= "#modal-carousel".$alb_row->album_id; ?>').carousel('next')">
                   <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
           </div>
-        </div>
+          <!-- Indicators -->
+          <!-- <ol class="carousel-indicators">
+              <?php
+              $prev_count = NULL;
+              $arr_length = count($gal_data['modal_data']);
+              for($i = 1; $i <= $arr_length; $i++)
+              {
+                if ($gal_data['modal_data'][$i-1]->album_id == $alb_row->album_id)
+                {
+                  if ($prev_count == NULL)
+                  { ?>
+                    <li data-target="#modal-carousel<?= $alb_row->album_id; ?>" data-slide-to="<?= $i-1; ?>" class="active"></li>
+                    <?php
+                  }
+                  else
+                  { ?>
+                    <li data-target="#modal-carousel<?= $alb_row->album_id; ?>" data-slide-to="<?= $i-1; ?>"></li>
+                    <?php
+                  }
+                  $prev_count = $i;
+                }
+              } ?>
+          </ol> -->
     </div>
 </div>

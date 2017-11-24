@@ -39,12 +39,10 @@ Class Upload_model Extends CI_Model
     $query = $this->db->get();
     $info = $query->result();
 
-    $alb_path_tags = str_replace("/", ",", $info[0]->album_path);
     $alb_name_len = strlen($post['album_select']);
     for($i = 0; $i < count($image_data); $i++)
     {
       $pic_name_tags = str_replace("_", ",", $image_data[$i]['raw_name'], $alb_name_len);
-      $tags = substr($alb_path_tags, 8).",".$pic_name_tags;
 
       $data = array(
             'alt'         => $image_data[$i]['raw_name'],
@@ -52,7 +50,7 @@ Class Upload_model Extends CI_Model
             'full_path'   => $info[0]->album_path.'/'.$image_data[$i]['file_name'],
             'file_name'   => $image_data[$i]['file_name'],
             'thumb'       => $thumb,
-            'pic_tags'    => $tags,
+            'pic_tags'    => $pic_name_tags,
             'album_id'    => $info[0]->album_id
       );
     }

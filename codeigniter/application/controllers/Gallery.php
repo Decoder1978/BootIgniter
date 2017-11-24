@@ -24,7 +24,7 @@ class Gallery extends CI_Controller
 		$album_data = $this->Image_model->get_album_info();
 		$img_data = $this->Image_model->get_image($this->uri->segment(1));
 		/*******************  MODAL SECTION  ****************/
-		$modal_data = $this->Image_model->get_album_images();
+		$modal_data = $this->Image_model->get_thumbs();
 		$comment_data = $this->Comment_model->get_comments();
 		$comment_status = '';
 		/*******************  COMMENT SECTION  ****************/
@@ -41,6 +41,7 @@ class Gallery extends CI_Controller
 			{
 				$this->session->set_flashdata('msg',"Your message has been sent!");
 				$this->Comment_model->insert_comment($insert_data);
+				redirect(base_url());
 			}
 		}
 		else
@@ -59,7 +60,7 @@ class Gallery extends CI_Controller
 	function download_album()
 	{
 		$album_id = $this->uri->segment(3);
-		$modal_data = $this->Image_model->get_album_images();
+		$modal_data = $this->Image_model->get_thumbs();
 		$album_title = '';
 		foreach ($modal_data as $value) {
 			if($value->album_id == $album_id){

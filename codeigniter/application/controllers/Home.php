@@ -24,7 +24,7 @@ class Home extends CI_Controller
 		$album_data = $this->Image_model->get_album_info();
 		$recent_data = $this->Image_model->recent_upload_images();
 		/*******************  MODAL SECTION  ****************/
-		$modal_data = $this->Image_model->get_album_images();
+		$modal_data = $this->Image_model->get_thumbs();
 		$comment_data = $this->Comment_model->get_comments();
 		$comment_status = '';
 		/*******************  COMMENT SECTION  ****************/
@@ -55,22 +55,6 @@ class Home extends CI_Controller
 												'page' => 'pages/home', 'home_alb' => 'pages/home_albums', 'home_gal' => 'pages/home_gal');
 		$this->load->view('templates/head', $data);
 		$this->load->view('templates/body', $page_body);
-	}
-
-	function download_album()
-	{
-		$album_id = $this->uri->segment(3);
-		$modal_data = $this->Image_model->get_album_images();
-		$album_title = '';
-		foreach ($modal_data as $value) {
-			if($value->album_id == $album_id){
-				$album_title = $value->album_title;
-				$this->zip->read_file($value->full_path);
-			}
-		}
-		$this->zip->compression_level = 5;
-		$this->zip->archive('backup/archives/'.$album_title.'.zip');
-		$this->zip->download($album_title.'.zip');
 	}
 
 	function logout()
